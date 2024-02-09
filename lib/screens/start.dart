@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:actemo_flutter/screens/login.dart';
+
 import 'package:actemo_flutter/components/background.dart';
 
 class Start extends StatelessWidget {
@@ -38,8 +40,7 @@ class Start extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
-                  debugPrint('pressed get started button');
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Login()));
                 },
                 child: Text('Get Started',
                   style: GoogleFonts.roboto(
