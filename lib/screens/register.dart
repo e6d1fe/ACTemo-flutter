@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:actemo_flutter/screens/main_screen.dart';
+
 import 'package:actemo_flutter/components/background.dart';
 
 class Register extends StatefulWidget {
@@ -366,9 +368,7 @@ class _RegisterState extends State<Register> {
                       );
 
                       if (newUser.user != null) {
-                        // What you want to do after signup succeeds
-                        debugPrint('signup has succeeded');
-                        // Navigator.push(context, MaterialPageRoute(builder: (context) => NextScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
                       }
                     } catch (err) {
                       debugPrint(err.toString());
