@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:actemo_flutter/screens/identify/summary.dart';
+
 class Instructions extends StatefulWidget {
   const Instructions({super.key});
 
@@ -259,7 +261,7 @@ class _InstructionsState extends State<Instructions> {
               onPressed: () {
                 // debugPrint('pressed start button');
                 if (isChecked) {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Summary()));
                 } else {
                   //
                 }
