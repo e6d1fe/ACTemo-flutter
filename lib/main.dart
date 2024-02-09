@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:actemo_flutter/components/background.dart';
+import 'package:actemo_flutter/screens/start.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,12 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('actemo'),
-        ),
-        body: Background(),
-      ),
+      home: Start(),
     );
   }
 }
