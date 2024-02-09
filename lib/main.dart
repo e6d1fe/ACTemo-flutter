@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:actemo_flutter/components/background.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('actemo'),
         ),
+        body: Background(),
       ),
     );
   }
