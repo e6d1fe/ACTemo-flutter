@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:actemo_flutter/screens/settings.dart';
+
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
@@ -24,6 +26,7 @@ class MainScreen extends StatelessWidget {
               ),
               onPressed: () {
                 debugPrint('settings button was pressed');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
               },
             ),
           ),
