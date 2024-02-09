@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:actemo_flutter/components/background.dart';
 
@@ -11,6 +12,8 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final _authentication = FirebaseAuth.instance;
+
   final _formKey = GlobalKey<FormState>();
 
   String userFullName = '';
@@ -352,12 +355,30 @@ class _RegisterState extends State<Register> {
                     ),
                     padding: EdgeInsets.zero,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     debugPrint('$userFullName, $userEmail, $userPassword');
                     try {
                       _tryValidation();
-                    } catch (e) {
-                      debugPrint(e.toString());
+
+                      final newUser = await _authentication.createUserWithEmailAndPassword(
+                        email: userEmail,
+                        password: userPassword,
+                      );
+
+                      if (newUser.user != null) {
+                        // What you want to do after signup succeeds
+                        debugPrint('signup has succeeded');
+                        // Navigator.push(context, MaterialPageRoute(builder: (context) => NextScreen()));
+                      }
+                    } catch (err) {
+                      debugPrint(err.toString());
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text('Please check your email and password.'),
+                          backgroundColor: Colors.blue,
+                        ),
+                      );
                     }
                   },
                   child: Text(

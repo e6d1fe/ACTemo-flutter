@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "561766043902",
+    "project_id": "actemo-flutter",
+    "storage_bucket": "actemo-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561766043902:android:10d614f27a76ddf55f55af",
+        "android_client_info": {
+          "package_name": "com.example.actemo_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTgq6TBQAQ2sZ7LAwoGD4DbGrsbh_5Hr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
