@@ -7,7 +7,7 @@ import 'api_key.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
 
-import 'package:actemo_flutter/screens/identify/identify_complete.dart';
+import 'package:actemo_flutter/screens/identify/self_arousal_check.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: IdentifyComplete(),
+      home: SelfArousalCheck(),
     );
   }
 }
