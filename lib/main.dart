@@ -4,8 +4,6 @@ import 'firebase_options.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
 
-import 'package:actemo_flutter/screens/identify/instructions.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -21,8 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: Start(),
-      home: Instructions(),
+      home: Start(),
     );
   }
 }

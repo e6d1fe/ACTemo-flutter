@@ -1,370 +1,255 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:timer_builder/timer_builder.dart';
 
-import 'package:actemo_flutter/screens/settings.dart';
+import 'package:actemo_flutter/components/navbar.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
+  String getSystemTime() {
+    var now = DateTime.now();
+    return DateFormat('h:mm').format(now);
+  }
+
+  String getSystemDate() {
+    var now = DateTime.now();
+    String weekday = DateFormat.MMMMEEEEd().format(now).split(' ')[0].substring(0, 3);
+    String month = DateFormat.MMMMEEEEd().format(now).split(' ')[1].substring(0, 3);
+    String day = DateFormat.MMMMEEEEd().format(now).split(' ')[2];
+
+    return '$weekday, $month $day';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: SizedBox(
-          width: 110.0,
-          child: Image.asset('assets/logos/actemo_logo_start.png',),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: IconButton(
-              icon: const Icon(
-                  Icons.settings,
-                  size: 36.0,
-                  color: Color(0xff74777f)
-              ),
-              onPressed: () {
-                debugPrint('settings button was pressed');
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-              },
-            ),
-          ),
-        ],
-      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Card(
-                margin: EdgeInsets.zero,
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    color: Color(0xffc4c6d0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // logo
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: 80.08,
+              padding: const EdgeInsets.only(top: 6.04, left: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset('assets/logos/actemo_logo_letter.png',
                   ),
-                  borderRadius: BorderRadius.circular(16.25),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(15.0, 20.0, 15.0, 10.0),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 30,
-                    height: 188.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            // time & date
+            Padding(
+              padding: const EdgeInsets.all(35.0),
+              child: Column(
+                children: [
+                  const Text('For Your Emotional Life',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      height: 1.5,
+                      letterSpacing: 0.15,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      TimerBuilder.periodic(
+                        const Duration(minutes: 1),
+                        builder: (context) {
+                          return Text(getSystemTime(),
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 36.0,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff191c1b),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(
+                        width: 8.0,
+                      ),
+                      TimerBuilder.periodic(
+                        const Duration(days: 1),
+                        builder: (context) {
+                          return Text(getSystemDate(),
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff191c1b),
+                              letterSpacing: 0.25,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                ],
+              ),
+            ),
+            // cards
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: 139.0,
+                    height: 227.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: const Color(0xffd7e3ff),
+                    ),
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          height: 137.0,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('assets/logos/actemo_logo_mic.png',
-                                width: 23.7,
-                              ),
-                              Text('Identify and express your emotion with',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                ),
-                              ),
-                              Image.asset('assets/logos/actemo_logo_letter.png',
-                                width: 98.0,
-                              ),
-                              Text('By recognizing current valence and arousal degree, you can identify the emotions you might be currently feeling.',
-                                softWrap: true,
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff44474e),
-                                ),
-                              ),
-                            ],
+                        Text('Identify your\nemotion',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 14.787,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff284777),
+                            height: 1.333,
+                            letterSpacing: 0.62,
                           ),
                         ),
-                        // start button
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.only(left: 18.0, right: 18.0),
-                              minimumSize: const Size(116.8, 31.2),
-                              maximumSize: const Size(116.8, 31.2),
-                              backgroundColor: const Color(0xff4088f0),
-                              shadowColor: Colors.transparent
+                        SizedBox(
+                          height: 12.32,
+                        ),
+                        Text('Valence and Arousal\nDaily Check',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 9.10,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff001b3e),
+                            height: 1.457,
+                            letterSpacing: 0.41,
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Start now',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const Icon(Icons.arrow_forward,
-                                size: 18.0,
-                                color: Colors.white,
-                              )
-                            ],
-                          ),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Icon(Icons.find_in_page,
+                          size: 58.4,
+                          color: Color(0xff4088f0),
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      debugPrint('Identify card was tapped');
-                    },
-                    child: Card(
-                      margin: EdgeInsets.zero,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                          color: Color(0xffc4c6d0),
-                        ),
-                        borderRadius: BorderRadius.circular(16.25),
-                      ),
-                      child: Center(
-                        child: SizedBox(
-                          width: 175.5,
-                          height: 92.1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.find_in_page,
-                                size: 39.0,
-                                color: Color(0xff4088f0),
-                              ),
-                              Text('Identify',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                GestureDetector(
+                  child: Container(
+                    width: 139.0,
+                    height: 227.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: const Color(0xffb0f1c3),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      debugPrint('practice card was tapped');
-                    },
-                    child: Card(
-                      margin: EdgeInsets.zero,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                          color: Color(0xffc4c6d0),
-                        ),
-                        borderRadius: BorderRadius.circular(16.25),
-                      ),
-                      child: Center(
-                        child: SizedBox(
-                          width: 175.5,
-                          height: 92.1,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.local_movies,
-                                size: 39.0,
-                                color: Color(0xffaedcba),
-                              ),
-                              Text('Practice',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                ),
-                              ),
-                            ],
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text('Practice your\nemotion',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 14.787,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff00210f),
+                            height: 1.333,
+                            letterSpacing: 0.62,
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              GestureDetector(
-                onTap: () {
-                  debugPrint('archive card tapped');
-                },
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                      color: Color(0xffc4c6d0),
-                    ),
-                    borderRadius: BorderRadius.circular(16.25),
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 30,
-                    height: 64.0,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16.25, 13, 16.25, 13),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.attach_file,
-                            size: 26.0,
+                        SizedBox(
+                          height: 12.32,
+                        ),
+                        Text('By AI Based Script\nActing Practice',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 9.10,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff00210f),
+                            height: 1.457,
+                            letterSpacing: 0.41,
                           ),
-                          const SizedBox(
-                            width: 16.25,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Archive',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                  height: 1.429,
-                                ),
-                              ),
-                              Text('Access your past activities and progress',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001d33),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Icon(Icons.local_movies,
+                          size: 58.4,
+                          color: Color(0xff2c6a46),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => Dictionary()));
-                },
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                      color: Color(0xffc4c6d0),
-                    ),
-                    borderRadius: BorderRadius.circular(16.25),
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 30,
-                    height: 78.0,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16.25, 13, 16.25, 13),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.menu_book,
-                            size: 26.0,
-                          ),
-                          const SizedBox(
-                            width: 16.25,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Emotion Dictionary',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                  height: 1.429,
-                                ),
-                              ),
-                              Text('Learn about various emotions and their \nexpressions',
-                                softWrap: true,
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001d33),
-                                  height: 1.333,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
+              ],
+            ),
+            const SizedBox(
+              height: 54.0,
+            ),
+            // start now button
+            SizedBox(
+              width: 157.0,
+              height: 40.18,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: const Color(0xff4088f0),
+                  side: const BorderSide(
+                    color: Colors.transparent,
+                  )
+                ),
+                onPressed: () {},
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Start now',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 17.68,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        letterSpacing: 0.126,
                       ),
                     ),
-                  ),
+                    SizedBox(
+                      width: 3.0,
+                    ),
+                    Icon(Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 22.69,
+                    ),
+                  ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  debugPrint('help call card tapped');
-                },
-                child: Card(
-                  margin: EdgeInsets.zero,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                      color: Color(0xffc4c6d0),
-                    ),
-                    borderRadius: BorderRadius.circular(16.25),
-                  ),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - 30,
-                    height: 78.0,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(16.25, 13, 16.25, 13),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.phone,
-                            size: 26.0,
-                          ),
-                          const SizedBox(
-                            width: 16.25,
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Help Call',
-                                style: GoogleFonts.roboto(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001b3e),
-                                  height: 1.429,
-                                ),
-                              ),
-                              Text('Learn about various emotions and their \nexpressions',
-                                softWrap: true,
-                                style: GoogleFonts.roboto(
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff001d33),
-                                  height: 1.333,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 40.0,
+            ),
+          ],
         ),
       ),
+      bottomNavigationBar: const NavBar(),
     );
   }
 }
