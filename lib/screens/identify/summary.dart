@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
+import 'package:actemo_flutter/utils/gemini_prompt.dart';
+
 import 'package:actemo_flutter/components/statusbar.dart';
 import 'package:actemo_flutter/components/navbar.dart';
 
@@ -166,8 +168,7 @@ class _SummaryState extends State<Summary> {
                         ),
                       ),
                       onPressed: () {
-                        debugPrint(userInput);
-                        gemini.text("'$userInput' If the input sentence above is positive, say 'positive', and if it's negative, say 'negative'.")
+                        gemini.text(getGeminiPrompt(userInput))
                             .then((value) => print( value?.output )) /// or value?.content?.parts?.last.text
                             .catchError((e) => print(e));
                       },

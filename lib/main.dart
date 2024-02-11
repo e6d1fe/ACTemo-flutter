@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
+import 'api_key.dart';
+
 import 'package:actemo_flutter/screens/start.dart';
 
 void main() async {
@@ -11,7 +13,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  Gemini.init(apiKey: 'AIzaSyBc4GMGmhn3PGKWMPGfhnpdErkMCZBO95w');
+  Gemini.init(apiKey: geminiApiKey);
 
   runApp(MyApp());
 }
