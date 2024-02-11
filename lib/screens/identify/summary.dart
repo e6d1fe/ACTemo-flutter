@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
 import 'package:actemo_flutter/components/statusbar.dart';
+import 'package:actemo_flutter/components/navbar.dart';
 
 class Summary extends StatefulWidget {
   const Summary({super.key});
@@ -190,6 +191,7 @@ class _SummaryState extends State<Summary> {
           ),
         ),
       ),
+      bottomNavigationBar: NavBar(),
     );
   }
 
