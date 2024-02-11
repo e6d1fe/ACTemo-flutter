@@ -82,7 +82,7 @@ class IdentifyComplete extends StatelessWidget {
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => Next()));
                     debugPrint('confirm button is pressed');
                   },
-                  child: const Text('Confirm',
+                  child: const Text('Continue',
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 14.0,
