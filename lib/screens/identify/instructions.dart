@@ -258,11 +258,15 @@ class _InstructionsState extends State<Instructions> {
                     borderRadius: BorderRadius.circular(16.25),
                   )),
               onPressed: () {
-                // debugPrint('pressed start button');
                 if (isChecked) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Summary()));
                 } else {
-                  //
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please check the instructions above.'),
+                      backgroundColor: Color(0xff4285f4),
+                    ),
+                  );
                 }
               },
               child: const Text(
@@ -282,3 +286,4 @@ class _InstructionsState extends State<Instructions> {
     );
   }
 }
+xw
