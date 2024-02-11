@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 
 import 'package:actemo_flutter/components/statusbar.dart';
 
@@ -15,6 +16,8 @@ class _SummaryState extends State<Summary> {
   final _formKey = GlobalKey<FormState>();
 
   late ScrollController scrollController;
+
+  final gemini = Gemini.instance;
 
   @override
   void initState() {
@@ -161,7 +164,12 @@ class _SummaryState extends State<Summary> {
                           borderRadius: BorderRadius.circular(16.25),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        debugPrint(userInput);
+                        gemini.text("'$userInput' If the input sentence above is positive, say 'positive', and if it's negative, say 'negative'.")
+                            .then((value) => print( value?.output )) /// or value?.content?.parts?.last.text
+                            .catchError((e) => print(e));
+                      },
                       child: const Text('Done',
                         style: TextStyle(
                           fontFamily: 'Roboto',

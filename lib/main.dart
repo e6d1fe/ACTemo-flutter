@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
 
@@ -9,6 +10,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  Gemini.init(apiKey: 'AIzaSyBc4GMGmhn3PGKWMPGfhnpdErkMCZBO95w');
+
   runApp(MyApp());
 }
 
