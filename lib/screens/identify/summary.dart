@@ -33,7 +33,7 @@ class _SummaryState extends State<Summary> {
             FocusScope.of(context).unfocus();
           },
           child: Padding(
-            padding: const EdgeInsets.all(23.52),
+            padding: const EdgeInsets.all(25.0),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -49,23 +49,76 @@ class _SummaryState extends State<Summary> {
                     ],
                   ),
                   const SizedBox(
-                    height: 50.0,
+                    height: 17.0,
                   ),
-                  const Text('Write a short summary of your day',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                      height: 1.454,
+                  // Step 1
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text('Step 1',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff74777f),
+                        height: 1.5,
+                        letterSpacing: 0.15,
+                      ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 4.0,
+                  ),
+                  // Valence Diary
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(Icons.add_reaction_outlined,
+                          size: 24.0,
+                          color: Color(0xff4088f0),
+                        ),
+                        SizedBox(
+                          width: 8.93,
+                        ),
+                        Text('Valence Diary',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            height: 1.333,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25.57,
+                  ),
+                  // Write a short summary of your day
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text('Write a short summary of your day',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff001e2f),
+                        height: 1.333,
+                        letterSpacing: 0.15,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.14,
+                  ),
+                  // diary input field
                   Form(
                     key: _formKey,
                     child: TextField(
                       keyboardType: TextInputType.multiline,
-                      // minLines: 1,
                       maxLines: 11,
                       onTap: () {
                         scrollAnimate();
@@ -76,16 +129,46 @@ class _SummaryState extends State<Summary> {
                       scrollPadding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom
                       ),
-                      decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff4285f4),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color(0xfff9f9ff),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xffc4c6d0),
                           ),
+                          borderRadius: BorderRadius.circular(12.0),
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xff4285f4),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(
+                            color: Color(0xffc4c6d0),
                           ),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 80.0,
+                  ),
+                  SizedBox(
+                    width: 300.0,
+                    height: 48.0,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff4285f4),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16.25),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Text('Done',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          letterSpacing: 0.1,
                         ),
                       ),
                     ),
@@ -97,16 +180,6 @@ class _SummaryState extends State<Summary> {
               ),
             ),
           ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint(userInput);
-        },
-        backgroundColor: const Color(0xff4285f4),
-        child: const Icon(Icons.check,
-          size: 16.0,
-          color: Colors.white,
         ),
       ),
     );
