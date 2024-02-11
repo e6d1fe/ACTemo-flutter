@@ -173,7 +173,6 @@ class _InstructionsState extends State<Instructions> {
               ),
               child: SizedBox(
                 width: 360.0,
-                height: 120.0,
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                   child: Column(
