@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 
-import 'package:actemo_flutter/utils/gemini_prompt.dart';
+import 'package:actemo_flutter/screens/identify/self_arousal_check.dart';
 
-import 'package:actemo_flutter/components/statusbar.dart';
-import 'package:actemo_flutter/components/navbar.dart';
+import 'package:actemo_flutter/utils/gemini_prompt.dart';
 
 class Summary extends StatefulWidget {
   const Summary({super.key});
@@ -33,6 +32,25 @@ class _SummaryState extends State<Summary> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: AppBar(
+        backgroundColor: const Color(0xffededf4),
+        title: const Text('Identification',
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 16.0,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+            letterSpacing: 0.15,
+          ),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.chevron_left,
+            size: 24.0,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () {
@@ -43,20 +61,6 @@ class _SummaryState extends State<Summary> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      StatusBar(isDone: false),
-                      SizedBox(
-                        width: 3.0,
-                      ),
-                      StatusBar(isDone: false),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 17.0,
-                  ),
                   // Step 1
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -101,7 +105,21 @@ class _SummaryState extends State<Summary> {
                     ),
                   ),
                   const SizedBox(
-                    height: 25.57,
+                    height: 9.58,
+                  ),
+                  const Text('ACTemo uses a Natural Language Processing (NLP) model to analyze the degree of valence through your description of the factual events that occurred today.',
+                    softWrap: true,
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      height: 1.333,
+                      letterSpacing: 0.4,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15.83,
                   ),
                   // Write a short summary of your day
                   SizedBox(
@@ -154,7 +172,7 @@ class _SummaryState extends State<Summary> {
                     ),
                   ),
                   const SizedBox(
-                    height: 80.0,
+                    height: 60.0,
                   ),
                   SizedBox(
                     width: 300.0,
@@ -171,6 +189,7 @@ class _SummaryState extends State<Summary> {
                         gemini.text(getGeminiPrompt(userInput))
                             .then((value) => print( value?.output )) /// or value?.content?.parts?.last.text
                             .catchError((e) => print(e));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SelfArousalCheck()));
                       },
                       child: const Text('Done',
                         style: TextStyle(
@@ -192,7 +211,6 @@ class _SummaryState extends State<Summary> {
           ),
         ),
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 
