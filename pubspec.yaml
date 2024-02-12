@@ -75,6 +75,7 @@ flutter:
     - assets/emotional_board_valence.png
     - assets/emotional_board_high.png
     - assets/emotional_board_low.png
+    - assets/images/dic/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
