@@ -14,6 +14,7 @@ class Summary extends StatefulWidget {
 
 class _SummaryState extends State<Summary> {
   String userInput = '';
+  String valence = '';
 
   final _formKey = GlobalKey<FormState>();
 
@@ -45,7 +46,9 @@ class _SummaryState extends State<Summary> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: const Icon(Icons.chevron_left,
             size: 24.0,
           ),
@@ -186,10 +189,22 @@ class _SummaryState extends State<Summary> {
                         ),
                       ),
                       onPressed: () {
-                        gemini.text(getGeminiPrompt(userInput))
-                            .then((value) => print( value?.output )) /// or value?.content?.parts?.last.text
-                            .catchError((e) => print(e));
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SelfArousalCheck()));
+                        gemini.text(getGeminiPrompt(userInput)).then((value) {
+                          if (value?.output == 'Positive' || value?.output == 'Negative') {
+                            setState(() {
+                              valence = value?.output as String;
+                            });
+                            debugPrint(valence);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SelfArousalCheck()));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Please refrain from using overly violent expressions.'),
+                                backgroundColor: Colors.blue,
+                              ),
+                            );
+                          }
+                        }).catchError((e) => print(e));
                       },
                       child: const Text('Done',
                         style: TextStyle(
