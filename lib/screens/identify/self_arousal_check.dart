@@ -1,10 +1,10 @@
 import 'package:actemo_flutter/utils/arousal_check_category.dart';
 import 'package:flutter/material.dart';
 
-import 'package:actemo_flutter/components/navbar.dart';
-
 class SelfArousalCheck extends StatefulWidget {
-  const SelfArousalCheck({super.key});
+  SelfArousalCheck({required this.valence, super.key});
+
+  String? valence;
 
   @override
   State<SelfArousalCheck> createState() => _SelfArousalCheckState();
@@ -14,6 +14,8 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
   final List arousalCheckData = List.generate(arousalCheckHeader.length, (index) => ArousalCheckCategory(arousalCheckHeader[index], arousalCheckDescription[index]));
 
   List<bool> arousalCheckCount = [false, false, false, false, false, false, false];
+
+  String? valence;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,9 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: const Icon(Icons.chevron_left,
             size: 24.0,
           ),
@@ -176,6 +180,8 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                               ),
                               onPressed: () {
                                 debugPrint(arousalCheckCount.toString());
+                                valence = widget.valence;
+                                debugPrint(valence);
                               },
                               child: const Text('Done',
                                 style: TextStyle(
@@ -197,12 +203,10 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                   }
                 ),
               ),
-
             ],
           ),
         ),
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 }
