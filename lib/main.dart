@@ -6,7 +6,6 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'api_key.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
-
 import 'package:actemo_flutter/screens/identify/emotional_board.dart';
 
 void main() async {

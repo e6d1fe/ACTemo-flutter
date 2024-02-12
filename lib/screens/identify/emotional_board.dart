@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:actemo_flutter/components/navbar.dart';
 
 import 'package:actemo_flutter/utils/emotion_list.dart';
+import 'package:actemo_flutter/data/contents.dart';
+
+import 'package:actemo_flutter/screens/identify/emotion_card.dart';
 
 class EmotionalBoard extends StatefulWidget {
   const EmotionalBoard({super.key});
@@ -522,7 +525,6 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                         onChanged: (value) {
                           setState(() {
                             selectedEmotion = value.toString();
-                            debugPrint(value.toString());
                           });
                         },
                         activeColor: const Color(0xff4088f0),
@@ -534,6 +536,8 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                           onPressed: () {
                             // lead to corresponding emotion archive page
                             debugPrint('lead to emotion page');
+                            var idx = EmotionTitle.indexOf(emotionList[0][index]);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(idx: idx)));
                           },
                         ),
                       ),
@@ -561,7 +565,8 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Next()));
+                    // var index = EmotionTitle.indexOf(selectedEmotion!);
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(index: index)));
                     // proceed to 2nd stage - practice
                   },
                   child: const Text('Confirm',
