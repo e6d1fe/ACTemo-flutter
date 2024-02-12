@@ -73,6 +73,8 @@ flutter:
     - assets/self_arousal_check.png
     - assets/emotional_board_arousal.png
     - assets/emotional_board_valence.png
+    - assets/emotional_board_high.png
+    - assets/emotional_board_low.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

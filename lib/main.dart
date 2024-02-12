@@ -8,7 +8,6 @@ import 'api_key.dart';
 import 'package:actemo_flutter/screens/start.dart';
 
 import 'package:actemo_flutter/screens/identify/emotional_board.dart';
-import 'package:actemo_flutter/screens/identify/summary.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,8 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: EmotionalBoard(),
-      home: Summary(),
+      home: EmotionalBoard(),
     );
   }
 }
