@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timer_builder/timer_builder.dart';
 
+import 'package:actemo_flutter/screens/identify/instructions.dart';
+
 import 'package:actemo_flutter/components/navbar.dart';
 
 class MainScreen extends StatelessWidget {
@@ -213,7 +215,9 @@ class MainScreen extends StatelessWidget {
                     color: Colors.transparent,
                   )
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Instructions()));
+                },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
