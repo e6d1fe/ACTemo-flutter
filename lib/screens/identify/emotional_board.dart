@@ -8,7 +8,9 @@ import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/screens/identify/emotion_card.dart';
 
 class EmotionalBoard extends StatefulWidget {
-  const EmotionalBoard({super.key});
+  EmotionalBoard({required this.emotionCategory, super.key});
+
+  int? emotionCategory;
 
   @override
   State<EmotionalBoard> createState() => _EmotionalBoardState();
@@ -568,6 +570,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                     // var index = EmotionTitle.indexOf(selectedEmotion!);
                     // Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(index: index)));
                     // proceed to 2nd stage - practice
+                    debugPrint(widget.emotionCategory.toString());
                   },
                   child: const Text('Confirm',
                     style: TextStyle(

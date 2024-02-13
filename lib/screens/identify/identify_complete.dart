@@ -1,7 +1,22 @@
 import 'package:flutter/material.dart';
 
-class IdentifyComplete extends StatelessWidget {
-  const IdentifyComplete({super.key});
+import 'package:actemo_flutter/screens/identify/emotional_board.dart';
+
+class IdentifyComplete extends StatefulWidget {
+  IdentifyComplete({required this.valence, required this.arousal, super.key});
+
+  String? valence;
+  String? arousal;
+
+  @override
+  State<IdentifyComplete> createState() => _IdentifyCompleteState();
+}
+
+class _IdentifyCompleteState extends State<IdentifyComplete> {
+  String? valence;
+  String? arousal;
+
+  int? emotionCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +35,9 @@ class IdentifyComplete extends StatelessWidget {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: const Icon(Icons.chevron_left,
             size: 24.0,
           ),
@@ -79,8 +96,26 @@ class IdentifyComplete extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => Next()));
-                    debugPrint('confirm button is pressed');
+                    debugPrint('identify complete: button is pressed');
+                    setState(() {
+                      valence = widget.valence;
+                      arousal = widget.arousal;
+                    });
+                    debugPrint(valence);
+                    debugPrint(arousal);
+
+                    // 판단하는 함수
+                    if (valence == 'positive' && arousal == 'high') {
+                      emotionCategory = 0;
+                    } else if (valence == 'positive' && arousal == 'low') {
+                      emotionCategory = 1;
+                    } else if (valence == 'negative' && arousal == 'high') {
+                      emotionCategory = 3;
+                    } else if (valence == 'negative' && arousal == 'low') {
+                      emotionCategory = 2;
+                    }
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory,)));
                   },
                   child: const Text('Continue',
                     style: TextStyle(

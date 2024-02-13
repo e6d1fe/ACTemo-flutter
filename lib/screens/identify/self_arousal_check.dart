@@ -1,6 +1,8 @@
 import 'package:actemo_flutter/utils/arousal_check_category.dart';
 import 'package:flutter/material.dart';
 
+import 'package:actemo_flutter/screens/identify/identify_complete.dart';
+
 class SelfArousalCheck extends StatefulWidget {
   SelfArousalCheck({required this.valence, super.key});
 
@@ -13,9 +15,11 @@ class SelfArousalCheck extends StatefulWidget {
 class _SelfArousalCheckState extends State<SelfArousalCheck> {
   final List arousalCheckData = List.generate(arousalCheckHeader.length, (index) => ArousalCheckCategory(arousalCheckHeader[index], arousalCheckDescription[index]));
 
-  List<bool> arousalCheckCount = [false, false, false, false, false, false, false];
+  List<bool> arousalCheckArray = [false, false, false, false, false, false, false];
 
+  int? arousalCheckCount;
   String? valence;
+  String? arousal;
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +129,10 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                     return Column(
                       children: [
                         CheckboxListTile(
-                          value: arousalCheckCount[index],
+                          value: arousalCheckArray[index],
                           onChanged: (value) {
                             setState(() {
-                              arousalCheckCount[index] = !arousalCheckCount[index];
+                              arousalCheckArray[index] = !arousalCheckArray[index];
                             });
                           },
                           title: Text(arousalCheckData[index].header,
@@ -179,9 +183,23 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                                 )
                               ),
                               onPressed: () {
-                                debugPrint(arousalCheckCount.toString());
-                                valence = widget.valence;
+                                debugPrint(arousalCheckArray.toString());
+                                setState(() {
+                                  valence = widget.valence;
+                                  arousalCheckCount = arousalCheckArray.where((item) => item == true).length;
+
+                                  if (arousalCheckCount! >= 4) {
+                                    arousal = 'high';
+                                  } else {
+                                    arousal = 'low';
+                                  }
+
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => IdentifyComplete(valence: valence, arousal: arousal)));
+                                });
+
                                 debugPrint(valence);
+                                debugPrint(arousalCheckCount.toString());
+                                debugPrint(arousal);
                               },
                               child: const Text('Done',
                                 style: TextStyle(
