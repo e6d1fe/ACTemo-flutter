@@ -15,11 +15,11 @@ class _NavBarState extends State<NavBar> {
   int _currentNavBarIndex = 0;
 
   final List<Widget> screens = [
-    MainScreen(),
+    const MainScreen(),
     // Identify(),
-    Instructions(),
+    const Instructions(),
     // Archive()
-    Summary(),
+    const Summary(),
   ];
 
   @override
@@ -52,7 +52,7 @@ class _NavBarState extends State<NavBar> {
           unselectedIconTheme: const IconThemeData(
             color: Color(0xFF001B3E),
           ),
-          selectedItemColor: Color(0xff4088f0),
+          selectedItemColor: const Color(0xff4088f0),
           unselectedItemColor: const Color(0xFF001B3E),
 
           onTap: (int value) {
@@ -60,9 +60,7 @@ class _NavBarState extends State<NavBar> {
               _currentNavBarIndex = value;
             });
 
-            if (_currentNavBarIndex == 1 || _currentNavBarIndex == 2) {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => screens[_currentNavBarIndex]));
-            }
+            Navigator.push(context, MaterialPageRoute(builder: (context) => screens[_currentNavBarIndex]));
           },
 
           currentIndex: _currentNavBarIndex,
