@@ -8,9 +8,11 @@ import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/screens/identify/emotion_card.dart';
 
 class EmotionalBoard extends StatefulWidget {
-  EmotionalBoard({required this.emotionCategory, super.key});
+  EmotionalBoard({required this.emotionCategory, required this.valenceString, required this.arousalString, super.key});
 
   int? emotionCategory;
+  String? valenceString;
+  String? arousalString;
 
   @override
   State<EmotionalBoard> createState() => _EmotionalBoardState();
@@ -108,8 +110,8 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text('High',
-                                style: TextStyle(
+                              Text(widget.valenceString!,
+                                style: const TextStyle(
                                   fontFamily: 'Roboto',
                                   fontSize: 24.433,
                                   fontWeight: FontWeight.w400,
@@ -117,10 +119,16 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   height: 1.333,
                                 ),
                               ),
-                              Image.asset('assets/emotional_board_high.png',
-                                height: 40.0,
-                                color: const Color(0xff4285f4),
-                              ),
+                              if (widget.valenceString == 'High')
+                                Image.asset('assets/emotional_board_high.png',
+                                  height: 40.0,
+                                  color: const Color(0xff4285f4),
+                                ),
+                              if (widget.valenceString == 'Low')
+                                Image.asset('assets/emotional_board_low.png',
+                                  height: 40.0,
+                                  color: const Color(0xff4285f4),
+                                ),
                             ],
                           ),
                         ],
@@ -167,8 +175,8 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text('Low',
-                                style: TextStyle(
+                              Text(widget.arousalString!,
+                                style: const TextStyle(
                                   fontFamily: 'Roboto',
                                   fontSize: 24.433,
                                   fontWeight: FontWeight.w400,
@@ -176,10 +184,16 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   height: 1.333,
                                 ),
                               ),
-                              Image.asset('assets/emotional_board_low.png',
-                                height: 40.0,
-                                color: const Color(0xffaedcba),
-                              ),
+                              if (widget.arousalString == 'High')
+                                Image.asset('assets/emotional_board_high.png',
+                                  height: 40.0,
+                                  color: const Color(0xffaedcba),
+                                ),
+                              if (widget.arousalString == 'Low')
+                                Image.asset('assets/emotional_board_low.png',
+                                  height: 40.0,
+                                  color: const Color(0xffaedcba),
+                                ),
                             ],
                           ),
                         ],
@@ -278,16 +292,17 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                     debugPrint('unpleasant container was tapped');
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.only(top: 7.19, left: 9.0),
+                                    padding: const EdgeInsets.only(top: 7.19, left: 9.0),
                                     width: 161.0,
                                     height: 103.0,
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: widget.emotionCategory != 2 ? null : const LinearGradient(
                                         begin: Alignment(0.55, -0.83),
                                         end: Alignment(-0.55, 0.83),
                                         colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                       ),
-                                      border: Border(
+                                      color: widget.emotionCategory == 2 ? null : Colors.white,
+                                      border: const Border(
                                         top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                         bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
                                         left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
@@ -303,7 +318,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                             fontFamily: 'Roboto',
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w400,
-                                            color: Colors.white,
+                                            color: widget.emotionCategory == 2 ? Colors.white : const Color(0xffdddfe5),
                                             height: 1.5,
                                             letterSpacing: 0.50,
                                           ),
@@ -318,16 +333,21 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                     debugPrint('activation container was tapped');
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.only(top: 7.19, right: 9.0),
+                                    padding: const EdgeInsets.only(top: 7.19, right: 9.0),
                                     width: 161.0,
                                     height: 103.0,
-                                    // color: Colors.red,
                                     decoration: BoxDecoration(
-                                      border: Border(
+                                      gradient: widget.emotionCategory != 3 ? null : const LinearGradient(
+                                        begin: Alignment(0.55, -0.83),
+                                        end: Alignment(-0.55, 0.83),
+                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
+                                      ),
+                                      color: widget.emotionCategory == 3 ? null : Colors.white,
+                                      border: const Border(
                                         top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                         bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
                                       ),
                                     ),
                                     child: Column(
@@ -339,7 +359,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                             fontFamily: 'Roboto',
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xffdddfe5),
+                                            color: widget.emotionCategory == 3 ? Colors.white : const Color(0xffdddfe5),
                                             height: 1.5,
                                             letterSpacing: 0.50,
                                           ),
@@ -359,18 +379,23 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                     debugPrint('deactivation container was tapped');
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.only(bottom: 7.19, left: 9.0),
+                                    padding: const EdgeInsets.only(bottom: 7.19, left: 9.0),
                                     width: 161.0,
                                     height: 103.0,
                                     decoration: BoxDecoration(
-                                      border: Border(
-                                        top: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      gradient: widget.emotionCategory != 1 ? null : const LinearGradient(
+                                        begin: Alignment(0.55, -0.83),
+                                        end: Alignment(-0.55, 0.83),
+                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
+                                      ),
+                                      color: widget.emotionCategory == 1 ? null : Colors.white,
+                                      border: const Border(
+                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
                                         left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                         right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
                                       ),
                                     ),
-                                    // color: Colors.red,
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -380,7 +405,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                             fontFamily: 'Roboto',
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xffdddfe5),
+                                            color: widget.emotionCategory == 1 ? Colors.white : const Color(0xffdddfe5),
                                             height: 1.5,
                                             letterSpacing: 0.50,
                                           ),
@@ -395,18 +420,23 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                     debugPrint('pleasant container was tapped');
                                   },
                                   child: Container(
-                                    padding: EdgeInsets.only(bottom: 7.19, right: 9.0),
+                                    padding: const EdgeInsets.only(bottom: 7.19, right: 9.0),
                                     width: 161.0,
                                     height: 103.0,
                                     decoration: BoxDecoration(
-                                      border: Border(
-                                        top: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      gradient: widget.emotionCategory != 0 ? null : const LinearGradient(
+                                        begin: Alignment(0.55, -0.83),
+                                        end: Alignment(-0.55, 0.83),
+                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
+                                      ),
+                                      color: widget.emotionCategory == 0 ? null : Colors.white,
+                                      border: const Border(
+                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
                                       ),
                                     ),
-                                    // color: Colors.red,
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -416,7 +446,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                             fontFamily: 'Roboto',
                                             fontSize: 16.0,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xffdddfe5),
+                                            color: widget.emotionCategory == 0 ? Colors.white : const Color(0xffdddfe5),
                                             height: 1.5,
                                             letterSpacing: 0.50,
                                           ),
@@ -516,14 +546,14 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
               // emotion list (radio list tiles)
               ListView.builder(
                 shrinkWrap: true,
-                itemCount: emotionList[0].length,
+                itemCount: emotionList[widget.emotionCategory!].length,
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
                       RadioListTile(
-                        title: Text(emotionList[0][index]),
+                        title: Text(emotionList[widget.emotionCategory!][index]),
                         groupValue: selectedEmotion,
-                        value: emotionList[0][index],
+                        value: emotionList[widget.emotionCategory!][index],
                         onChanged: (value) {
                           setState(() {
                             selectedEmotion = value.toString();
@@ -538,12 +568,14 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                           onPressed: () {
                             // lead to corresponding emotion archive page
                             debugPrint('lead to emotion page');
-                            var idx = EmotionTitle.indexOf(emotionList[0][index]);
+                            var idx = EmotionTitle.indexOf(emotionList[widget.emotionCategory!][index]);
+                            debugPrint(emotionList[widget.emotionCategory!][index]);
+                            debugPrint(idx.toString());
                             Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(idx: idx)));
                           },
                         ),
                       ),
-                      if (index != emotionList.length - 1)
+                      if (index != emotionList[widget.emotionCategory!].length - 1)
                         const SizedBox(
                           height: 8.0,
                         ),
