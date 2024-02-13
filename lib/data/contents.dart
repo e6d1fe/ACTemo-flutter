@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class information {
   final String title;
   final String imagepath;
@@ -84,7 +82,7 @@ information calm = information.fromMap({
 );
 
 information sleepy = information.fromMap({
-  'title' : 'sleepy',
+  'title' : 'Sleepy',
   'letter' : 'S',
   'category' : 'Deactivation',
   'imagepath' : 'assets/images/dic/sleepy.png',
@@ -120,7 +118,7 @@ information depressed = information.fromMap({
 );
 
 information distressed = information.fromMap({
-  'title' : 'distressed',
+  'title' : 'Distressed',
   'letter' : 'D',
   'category' : 'Unpleasant',
   'imagepath' : 'assets/images/dic/sad.png',
