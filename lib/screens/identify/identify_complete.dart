@@ -105,7 +105,7 @@ class _IdentifyCompleteState extends State<IdentifyComplete> {
                     debugPrint(valence);
                     debugPrint(arousal);
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory, valenceString: valence == 'positive' ? 'Low' : 'High', arousalString: arousal == 'high' ? 'High' : 'Low')));
                   },
                   child: const Text('Continue',
                     style: TextStyle(
