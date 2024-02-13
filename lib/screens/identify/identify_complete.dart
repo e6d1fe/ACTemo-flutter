@@ -100,22 +100,12 @@ class _IdentifyCompleteState extends State<IdentifyComplete> {
                     setState(() {
                       valence = widget.valence;
                       arousal = widget.arousal;
+                      emotionCategory = getEmotionCategory(valence!, arousal!);
                     });
                     debugPrint(valence);
                     debugPrint(arousal);
 
-                    // 판단하는 함수
-                    if (valence == 'positive' && arousal == 'high') {
-                      emotionCategory = 0;
-                    } else if (valence == 'positive' && arousal == 'low') {
-                      emotionCategory = 1;
-                    } else if (valence == 'negative' && arousal == 'high') {
-                      emotionCategory = 3;
-                    } else if (valence == 'negative' && arousal == 'low') {
-                      emotionCategory = 2;
-                    }
-
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory,)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory)));
                   },
                   child: const Text('Continue',
                     style: TextStyle(
@@ -133,5 +123,17 @@ class _IdentifyCompleteState extends State<IdentifyComplete> {
         ),
       ),
     );
+  }
+
+  int getEmotionCategory(String valenceScore, String arousalScore) {
+    if (valenceScore == 'positive' && arousalScore == 'high') {
+      return 0;
+    } else if (valenceScore == 'positive' && arousalScore == 'low') {
+      return 1;
+    } else if (valenceScore == 'negative' && arousalScore == 'high') {
+      return 3;
+    } else {
+      return 2;
+    }
   }
 }
