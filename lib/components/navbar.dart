@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:actemo_flutter/screens/main_screen.dart';
 import 'package:actemo_flutter/screens/identify/instructions.dart';
 import 'package:actemo_flutter/screens/identify/summary.dart';
+import 'package:actemo_flutter/screens/archive/archive.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -18,7 +19,7 @@ class _NavBarState extends State<NavBar> {
     MainScreen(),
     // Identify(),
     Instructions(),
-    // Archive()
+    Archive(),
     Summary(),
   ];
 

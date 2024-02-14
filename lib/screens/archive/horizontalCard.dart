@@ -4,11 +4,11 @@ import 'package:actemo_flutter/screens/archive/detail.dart';
 
 Container HorizontalCard(context, index){
   return Container(
-    height: 70,
+    height: 80,
     width: 240,
     margin: const EdgeInsets.only(bottom: 15),
     decoration: BoxDecoration(
-      color: Color(0xFFCEE5FF),
+      color: Color(0xFFD7E3FF),
       //borderRadius: BorderRadius.circular(12),
     ),
     child: Stack(
@@ -20,13 +20,14 @@ Container HorizontalCard(context, index){
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text('${EmotionTitle[index]}',
                     style: TextStyle(
                       color: Color(0xFF001B3E),
-                      fontSize: 20,
+                      fontSize: 24,
                       fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w800,),),
+                      fontWeight: FontWeight.w500,),),
                   SizedBox(height: 3,),
                   SizedBox(
                       width: 250,
