@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:actemo_flutter/components/custom_appbar.dart';
+
 import 'package:actemo_flutter/data/contents.dart';
 
 class EmotionCard extends StatelessWidget {
@@ -10,27 +12,7 @@ class EmotionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('Identification',
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-            letterSpacing: 0.15,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.chevron_left,
-            size: 24.0,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'READemo'),
       body: SafeArea(
         child: Center(
           child: Container(

@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:actemo_flutter/screens/identify/summary.dart';
 
+import 'package:actemo_flutter/components/custom_appbar.dart';
+
 class Instructions extends StatefulWidget {
   const Instructions({super.key});
 
@@ -16,27 +18,7 @@ class _InstructionsState extends State<Instructions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('Identification',
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-            letterSpacing: 0.15,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.chevron_left,
-            size: 24.0,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'READemo'),
       body: SafeArea(
         child: Center(
           child: Column(

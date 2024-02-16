@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:actemo_flutter/components/navbar.dart';
+import 'package:actemo_flutter/components/custom_appbar.dart';
 
 import 'package:actemo_flutter/utils/emotion_list.dart';
 import 'package:actemo_flutter/data/contents.dart';
@@ -25,25 +26,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('Identification',
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-            letterSpacing: 0.15,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.chevron_left,
-            size: 24.0,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'READemo'),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 26.0, left: 27.74, right: 27.74),

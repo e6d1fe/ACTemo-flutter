@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:actemo_flutter/screens/identify/identify_complete.dart';
 
+import 'package:actemo_flutter/components/custom_appbar.dart';
+
 class SelfArousalCheck extends StatefulWidget {
   SelfArousalCheck({required this.valence, super.key});
 
@@ -25,27 +27,7 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('Identification',
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontSize: 16.0,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-            letterSpacing: 0.15,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: const Icon(Icons.chevron_left,
-            size: 24.0,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'READemo'),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 25.0, right: 25.0),
