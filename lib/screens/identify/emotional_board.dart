@@ -605,7 +605,6 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
           ),
         ),
       ),
-      bottomNavigationBar: NavBar(),
     );
   }
 }
