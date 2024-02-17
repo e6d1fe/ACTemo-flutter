@@ -39,7 +39,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+      padding: EdgeInsets.only(left: (MediaQuery.of(context).size.width - 360) / 2, right: (MediaQuery.of(context).size.width - 360) / 2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,6 +88,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                     height: 4.0,
                   ),
                   Text('Use different levels of volume to create impact\nand attention.',
+                    softWrap: true,
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 12.0,
@@ -117,34 +118,37 @@ class _AudioRecorderState extends State<AudioRecorder> {
               const SizedBox(
                 width: 11.0,
               ),
-              const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Intonation',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                      height: 1.333,
-                      letterSpacing: 0.50,
+              Expanded(
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Intonation',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                        height: 1.333,
+                        letterSpacing: 0.50,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Text('Vary the rise and fall of your voice at the end of\nsentences to indicate your meaning and attitude.',
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                      height: 1.333,
-                      letterSpacing: 0.40,
+                    SizedBox(
+                      height: 4.0,
                     ),
-                  ),
-                ],
+                    Text('Vary the rise and fall of your voice at the end of sentences to indicate your meaning and attitude.',
+                      softWrap: true,
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        height: 1.333,
+                        letterSpacing: 0.40,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
