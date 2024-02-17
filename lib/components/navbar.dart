@@ -35,7 +35,7 @@ class _NavBarState extends State<NavBar> {
             fontFamily: 'Roboto',
             fontSize: 14.0,
             fontWeight: FontWeight.w500,
-            color: Color(0xff4088f0),
+            color: Color(0xff001b3e),
             height: 1.429,
             letterSpacing: 0.10,
           ),
@@ -43,18 +43,18 @@ class _NavBarState extends State<NavBar> {
             fontFamily: 'Roboto',
             fontSize: 14.0,
             fontWeight: FontWeight.w500,
-            color: Color(0xFF001B3E),
+            color: Color(0xff001b3e),
             height: 1.429,
             letterSpacing: 0.10,
           ),
           selectedIconTheme: const IconThemeData(
-              color: Color(0xff4088f0),
+              color: Color(0xff001b3e),
           ),
           unselectedIconTheme: const IconThemeData(
-            color: Color(0xFF001B3E),
+            color: Color(0xff001b3e),
           ),
-          selectedItemColor: const Color(0xff4088f0),
-          unselectedItemColor: const Color(0xFF001B3E),
+          selectedItemColor: const Color(0xff001b3e),
+          unselectedItemColor: const Color(0xff001b3e),
 
           onTap: (int value) {
             setState(() {
