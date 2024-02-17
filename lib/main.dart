@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Act(index: 11),
+      home: Start(),
     );
   }
 }

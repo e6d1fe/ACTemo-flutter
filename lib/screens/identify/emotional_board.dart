@@ -6,6 +6,7 @@ import 'package:actemo_flutter/utils/emotion_list.dart';
 import 'package:actemo_flutter/data/contents.dart';
 
 import 'package:actemo_flutter/screens/identify/emotion_card.dart';
+import 'package:actemo_flutter/screens/practice/listen.dart';
 
 class EmotionalBoard extends StatefulWidget {
   EmotionalBoard({required this.emotionCategory, required this.valenceString, required this.arousalString, super.key});
@@ -20,6 +21,7 @@ class EmotionalBoard extends StatefulWidget {
 
 class _EmotionalBoardState extends State<EmotionalBoard> {
   String? selectedEmotion;
+  var indexNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -519,6 +521,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                         onChanged: (value) {
                           setState(() {
                             selectedEmotion = value.toString();
+                            indexNumber = EmotionTitle.indexOf(value);
                           });
                         },
                         activeColor: const Color(0xff4088f0),
@@ -529,7 +532,6 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                           icon: const Icon(Icons.arrow_right),
                           onPressed: () {
                             // lead to corresponding emotion archive page
-                            debugPrint('lead to emotion page');
                             var idx = EmotionTitle.indexOf(emotionList[widget.emotionCategory!][index]);
                             debugPrint(emotionList[widget.emotionCategory!][index]);
                             debugPrint(idx.toString());
@@ -561,9 +563,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                     ),
                   ),
                   onPressed: () {
-                    // var index = EmotionTitle.indexOf(selectedEmotion!);
-                    // Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(index: index)));
-                    // proceed to 2nd stage - practice
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Listen(index: indexNumber)));
                     debugPrint(widget.emotionCategory.toString());
                   },
                   child: const Text('Confirm',
