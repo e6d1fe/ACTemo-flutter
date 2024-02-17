@@ -89,6 +89,7 @@ flutter:
     - assets/tips/
     - assets/main_screen_text.png
     - assets/category/
+    - assets/act_audio/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
