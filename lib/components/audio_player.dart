@@ -90,7 +90,7 @@ class AudioPlayerState extends State<AudioPlayer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildControl(),
-                _buildSlider(MediaQuery.of(context).size.width - 30),
+                _buildSlider(MediaQuery.of(context).size.width - 55),
               ],
             ),
             const SizedBox(
