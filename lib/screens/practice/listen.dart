@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/data/script.dart';
+
 import 'package:actemo_flutter/components/chat.dart';
+
+import 'package:actemo_flutter/screens/practice/act.dart';
 
 class Listen extends StatefulWidget {
   const Listen({super.key, required this.index});
