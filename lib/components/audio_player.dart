@@ -5,17 +5,21 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart' as ap;
 
+import 'package:actemo_flutter/data/contents.dart';
+
 class AudioPlayer extends StatefulWidget {
   const AudioPlayer({
     required this.source,
     required this.onDelete,
     required this.audioPath,
+    required this.index,
     Key? key,
   }) : super(key: key);
 
   final ap.AudioSource source;
   final VoidCallback onDelete;
   final String audioPath;
+  final int index;
 
   @override
   AudioPlayerState createState() => AudioPlayerState();
@@ -136,6 +140,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                     ),
                     onPressed: () async {
                       debugPrint(widget.audioPath);
+                      debugPrint(EmotionTitle[widget.index]);
 
                       try {
                         var request = http.MultipartRequest('POST', Uri.parse('https://actemo-server-lc5owkzmdq-an.a.run.app/predict'));
@@ -143,7 +148,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                         request.files.add(
                             await http.MultipartFile.fromPath('file', widget.audioPath)
                         );
-                        request.fields['emotion'] = 'Angry';
+                        request.fields['emotion'] = EmotionTitle[widget.index];
 
                         var response = await request.send();
                         var result = await http.Response.fromStream(response);
@@ -235,7 +240,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                                                         ),
                                                       ),
                                                       TextSpan(
-                                                        text: ' | Emotion Name',
+                                                        text: ' | ${EmotionTitle[widget.index]}',
                                                         style: TextStyle(
                                                           fontFamily: 'Roboto',
                                                           fontSize: 14.0,

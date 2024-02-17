@@ -120,7 +120,12 @@ class _ListenState extends State<Listen> {
               height: MediaQuery.of(context).size.height*0.3,
               child: chat(index: index),
             ),
-
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Act(index: widget.index)));
+              },
+              child: Text('temp button'),
+            ),
             // 상황 녹음
 
           ],
