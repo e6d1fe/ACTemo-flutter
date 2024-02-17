@@ -118,8 +118,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
               const SizedBox(
                 width: 11.0,
               ),
-              Expanded(
-                child: const Column(
+              const Expanded(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -153,7 +153,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
             ],
           ),
           const SizedBox(
-            height: 35.0,
+            height: 15.0,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
