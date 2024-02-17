@@ -117,7 +117,7 @@ class _emotionCardState extends State<emotionCard> {
                                       EmotionEmoji[index],
                                       style: const TextStyle(fontSize: 100),
                                     ),
-                                    const SizedBox(height: 45,),
+                                    const SizedBox(height: 30,),
                                     Text(
                                       EmotionTitle[index],
                                       textAlign: TextAlign.center,
