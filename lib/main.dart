@@ -7,6 +7,7 @@ import 'api_key.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
 import 'package:actemo_flutter/screens/practice/act.dart';
+import 'package:actemo_flutter/screens/practice/listen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Act(),
+      home: Listen(index: 12),
     );
   }
 }
