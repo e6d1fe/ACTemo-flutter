@@ -147,9 +147,6 @@ class AudioPlayerState extends State<AudioPlayer> {
                         backgroundColor: const Color(0xff2c6a46),
                       ),
                       onPressed: () async {
-                        debugPrint(widget.audioPath);
-                        debugPrint(EmotionTitle[widget.index]);
-
                         try {
                           var request = http.MultipartRequest('POST', Uri.parse('https://actemo-server-lc5owkzmdq-an.a.run.app/predict'));
                           request.headers.addAll({'Content-Type': 'audio/mp4'});
@@ -165,7 +162,6 @@ class AudioPlayerState extends State<AudioPlayer> {
                           setState(() {
                             level = temp['level'];
                           });
-                          debugPrint(level);
                         } catch (e) {
                           debugPrint(e.toString());
                         }

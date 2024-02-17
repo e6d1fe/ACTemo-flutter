@@ -358,7 +358,6 @@ class _RegisterState extends State<Register> {
                     padding: EdgeInsets.zero,
                   ),
                   onPressed: () async {
-                    debugPrint('$userFullName, $userEmail, $userPassword');
                     try {
                       _tryValidation();
 

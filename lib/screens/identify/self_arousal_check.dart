@@ -165,7 +165,6 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                                 )
                               ),
                               onPressed: () {
-                                debugPrint(arousalCheckArray.toString());
                                 setState(() {
                                   valence = widget.valence;
                                   arousalCheckCount = arousalCheckArray.where((item) => item == true).length;
@@ -178,10 +177,6 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
 
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => IdentifyComplete(valence: valence, arousal: arousal)));
                                 });
-
-                                debugPrint(valence);
-                                debugPrint(arousalCheckCount.toString());
-                                debugPrint(arousal);
                               },
                               child: const Text('Done',
                                 style: TextStyle(

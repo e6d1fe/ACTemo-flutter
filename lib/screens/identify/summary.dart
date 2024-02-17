@@ -173,12 +173,10 @@ class _SummaryState extends State<Summary> {
                       ),
                       onPressed: () {
                         gemini.text(getGeminiPrompt(userInput)).then((value) {
-                          debugPrint(value?.output);
                           if (value?.output == 'positive' || value?.output == 'negative') {
                             setState(() {
                               valence = value?.output as String;
                             });
-                            debugPrint(valence);
                             Navigator.push(context, MaterialPageRoute(builder: (context) => SelfArousalCheck(valence: valence)));
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(

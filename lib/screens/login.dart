@@ -293,12 +293,6 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   onPressed: () async {
-                    debugPrint('$userEmail, $userPassword');
-                    // try {
-                    //   _tryValidation();
-                    // } catch (e) {
-                    //   debugPrint(e.toString());
-                    // }
                     try {
                       _tryValidation();
 

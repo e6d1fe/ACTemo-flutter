@@ -77,14 +77,11 @@ class _IdentifyCompleteState extends State<IdentifyComplete> {
                     ),
                   ),
                   onPressed: () {
-                    debugPrint('identify complete: button is pressed');
                     setState(() {
                       valence = widget.valence;
                       arousal = widget.arousal;
                       emotionCategory = getEmotionCategory(valence!, arousal!);
                     });
-                    debugPrint(valence);
-                    debugPrint(arousal);
 
                     Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory, valenceString: valence == 'positive' ? 'Low' : 'High', arousalString: arousal == 'high' ? 'High' : 'Low')));
                   },

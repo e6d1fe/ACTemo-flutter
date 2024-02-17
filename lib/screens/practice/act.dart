@@ -134,8 +134,6 @@ class _ActState extends State<Act> {
                   audioSource = ap.AudioSource.uri(Uri.file(path));
                   audioPath = path;
                   showPlayer = true;
-                  // debugPrint(path);
-                  // debugPrint(audioSource.toString());
                 });
               },
             ),

@@ -533,8 +533,6 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                           onPressed: () {
                             // lead to corresponding emotion archive page
                             var idx = EmotionTitle.indexOf(emotionList[widget.emotionCategory!][index]);
-                            debugPrint(emotionList[widget.emotionCategory!][index]);
-                            debugPrint(idx.toString());
                             Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionCard(idx: idx)));
                           },
                         ),
@@ -564,7 +562,6 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                   ),
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => Listen(index: indexNumber)));
-                    debugPrint(widget.emotionCategory.toString());
                   },
                   child: const Text('Confirm',
                     style: TextStyle(
