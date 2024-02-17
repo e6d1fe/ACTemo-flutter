@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart' as ap;
 
 import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/data/script.dart';
 
 import 'package:actemo_flutter/components/chat.dart';
 import 'package:actemo_flutter/components/custom_appbar.dart';
+import 'package:actemo_flutter/components/audio_player.dart';
 
 import 'package:actemo_flutter/screens/practice/act.dart';
 
@@ -118,15 +120,20 @@ class _ListenState extends State<Listen> {
             const SizedBox(height: 5,),
 
             // 녹음본 재생 넣기
-
+            AudioPlayer(
+                source: ap.AudioSource.asset('assets/act_audio/${EmotionTitle[index]}.mp3'),
+                onDelete: () {},
+                audioPath: 'assets/act_audio/${EmotionTitle[index]}.mp3',
+                index: index,
+                isPractice: false,
+            ),
 
             // 페이지 이동
-            const SizedBox(height: 30,),
+            const SizedBox(height: 15.0),
             Align(
               alignment: Alignment.bottomRight,
               child: Container(
                 margin: const EdgeInsets.fromLTRB(0, 0, 20, 20),
-                //padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 height: 40,
                 width: 100,
                 decoration: BoxDecoration(
@@ -142,7 +149,6 @@ class _ListenState extends State<Listen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(width: 5,),
                         Text(
                           'Next',
                           textAlign: TextAlign.center,
@@ -153,7 +159,6 @@ class _ListenState extends State<Listen> {
                             fontWeight: FontWeight.w500,
                           )
                         ),
-                        // SizedBox(width: 5,),
                         Icon(Icons.navigate_next, color: Colors.white,)
                       ],
                     ),

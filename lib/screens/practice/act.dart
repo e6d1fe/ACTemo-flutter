@@ -126,6 +126,7 @@ class _ActState extends State<Act> {
               },
               audioPath: audioPath!,
               index: widget.index,
+              isPractice: true,
             ) :
             AudioRecorder(
               onStop: (String path) {

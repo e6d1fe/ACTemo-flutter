@@ -162,7 +162,7 @@ information depressed = information.fromMap({
 );
 
 information distressed = information.fromMap({
-  'title' : 'distressed',
+  'title' : 'Distressed',
   'letter' : 'D',
   'emoji' : '😟',
   'isSaved' : false,

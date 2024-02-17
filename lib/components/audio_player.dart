@@ -15,6 +15,7 @@ class AudioPlayer extends StatefulWidget {
     required this.onDelete,
     required this.audioPath,
     required this.index,
+    required this.isPractice,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class AudioPlayer extends StatefulWidget {
   final VoidCallback onDelete;
   final String audioPath;
   final int index;
+  final bool isPractice;
 
   @override
   AudioPlayerState createState() => AudioPlayerState(index: index);
@@ -82,8 +84,8 @@ class AudioPlayerState extends State<AudioPlayer> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('Listen to your current recorded voice',
-              style: TextStyle(
+            Text(widget.isPractice ? 'Listen to your current recorded voice' : 'Listen to the acting of AI voice actor',
+              style: const TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 14.0,
                 fontWeight: FontWeight.w500,
@@ -105,316 +107,317 @@ class AudioPlayerState extends State<AudioPlayer> {
             const SizedBox(
               height: 56.75,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 136,
-                  height: 47.62716,
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(
-                        width: 1.058,
-                        color: Color(0xff2c6a46),
+            if (widget.isPractice)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 136,
+                    height: 47.62716,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(
+                          width: 1.058,
+                          color: Color(0xff2c6a46),
+                        ),
                       ),
-                    ),
-                    onPressed: () {
-                      _audioPlayer.stop().then((value) => widget.onDelete());
-                    },
-                    child: const Text('Record Again',
-                      style: TextStyle(
-                        fontFamily: 'Roboto',
-                        fontSize: 12.70,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff2c6a46),
-                        height: 1.333,
-                        letterSpacing: 0.53,
+                      onPressed: () {
+                        _audioPlayer.stop().then((value) => widget.onDelete());
+                      },
+                      child: const Text('Record Again',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 12.70,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff2c6a46),
+                          height: 1.333,
+                          letterSpacing: 0.53,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  width: 10.58,
-                ),
-                SizedBox(
-                  width: 136,
-                  height: 47.62716,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xff2c6a46),
-                    ),
-                    onPressed: () async {
-                      debugPrint(widget.audioPath);
-                      debugPrint(EmotionTitle[widget.index]);
+                  const SizedBox(
+                    width: 10.58,
+                  ),
+                  SizedBox(
+                    width: 136,
+                    height: 47.62716,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xff2c6a46),
+                      ),
+                      onPressed: () async {
+                        debugPrint(widget.audioPath);
+                        debugPrint(EmotionTitle[widget.index]);
 
-                      try {
-                        var request = http.MultipartRequest('POST', Uri.parse('https://actemo-server-lc5owkzmdq-an.a.run.app/predict'));
-                        request.headers.addAll({'Content-Type': 'audio/mp4'});
-                        request.files.add(
-                            await http.MultipartFile.fromPath('file', widget.audioPath)
-                        );
-                        request.fields['emotion'] = EmotionTitle[widget.index];
+                        try {
+                          var request = http.MultipartRequest('POST', Uri.parse('https://actemo-server-lc5owkzmdq-an.a.run.app/predict'));
+                          request.headers.addAll({'Content-Type': 'audio/mp4'});
+                          request.files.add(
+                              await http.MultipartFile.fromPath('file', widget.audioPath)
+                          );
+                          request.fields['emotion'] = EmotionTitle[widget.index];
 
-                        var response = await request.send();
-                        var result = await http.Response.fromStream(response);
+                          var response = await request.send();
+                          var result = await http.Response.fromStream(response);
 
-                        var temp = convert.jsonDecode(result.body) as Map<String, dynamic>;
-                        setState(() {
-                          level = temp['level'];
-                        });
-                        debugPrint(level);
-                      } catch (e) {
-                        debugPrint(e.toString());
-                      }
+                          var temp = convert.jsonDecode(result.body) as Map<String, dynamic>;
+                          setState(() {
+                            level = temp['level'];
+                          });
+                          debugPrint(level);
+                        } catch (e) {
+                          debugPrint(e.toString());
+                        }
 
-                      showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          barrierColor: Colors.black.withOpacity(0.3199999928474426),
-                          builder: (context) {
-                            return Dialog(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.18),
-                              ),
-                              backgroundColor: Colors.white,
-                              child: Container(
-                                padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                                width: 324.27,
-                                height: 166.14,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('Achievement',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: 'Roboto',
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black,
-                                        height: 1.429,
-                                        letterSpacing: 0.10,
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Image.asset('assets/analysis/analysis_${level.toLowerCase()}.png',
-                                          width: 35.21,
-                                        ),
-                                        SizedBox(
-                                          width: 15.0,
-                                        ),
-                                        SizedBox(
-                                          height: 53.06,
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Text(level == 'A' ? "You're a Stellar ACTor!" : level == 'B' ? 'ACTivate More' : 'reACT Again',
-                                                style: TextStyle(
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Color(0xff191c20),
-                                                  height: 1.5,
-                                                  letterSpacing: 0.15,
-                                                ),
-                                              ),
-                                              Text.rich(
-                                                  TextSpan(
-                                                    children: [
-                                                      TextSpan(
-                                                        text: 'Similarity ',
-                                                        style: TextStyle(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 14.0,
-                                                          fontWeight: FontWeight.w400,
-                                                          color: Colors.black,
-                                                          height: 1.429,
-                                                          letterSpacing: 0.25,
-                                                        ),
-                                                      ),
-                                                      TextSpan(
-                                                        text: level,
-                                                        style: TextStyle(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 14.0,
-                                                          fontWeight: FontWeight.w400,
-                                                          color: Color(0xff4088f0),
-                                                          height: 1.429,
-                                                          letterSpacing: 0.25,
-                                                        ),
-                                                      ),
-                                                      TextSpan(
-                                                        text: ' | ${EmotionTitle[widget.index]}',
-                                                        style: TextStyle(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 14.0,
-                                                          fontWeight: FontWeight.w400,
-                                                          color: Color(0xff74777f),
-                                                          height: 1.429,
-                                                          letterSpacing: 0.25,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    if (level == 'C')
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            width: 152.0,
-                                            height: 27.78,
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: Color(0xff4088f0),
-                                              ),
-                                              onPressed: () {
-                                                _audioPlayer.stop().then((value) => widget.onDelete());
-                                                Navigator.of(context).pop();
-                                              },
-                                              child: Text('Try Again',
-                                                style: TextStyle(
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 11.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white,
-                                                  height: 1.455,
-                                                  letterSpacing: 0.50,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    if (level == 'B')
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        SizedBox(
-                                          width: 85,
-                                          height: 27.78,
-                                          child: OutlinedButton(
-                                            style: OutlinedButton.styleFrom(
-                                              side: BorderSide(
-                                                width: 0.49,
-                                                color: Colors.black.withOpacity(0.3199999928474426),
-                                              ),
-                                            ),
-                                            onPressed: () => {
-                                            Navigator.push(context,
-                                              MaterialPageRoute(builder: (context) => Tips(index: index))
-                                            )
-                                            },
-                                            child: Text('Finish',
-                                              style: TextStyle(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 11.0,
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xff4088f0),
-                                                height: 1.455,
-                                                letterSpacing: 0.50,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 6.26,
-                                        ),
-                                        SizedBox(
-                                          width: 105,
-                                          height: 27.78,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Color(0xff4088f0),
-                                            ),
-                                            onPressed: () {
-                                              _audioPlayer.stop().then((value) => widget.onDelete());
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: Text('Try Again',
-                                              style: TextStyle(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 11.0,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white,
-                                                height: 1.455,
-                                                letterSpacing: 0.50,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    if (level == 'A')
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            width: 152.0,
-                                            height: 27.78,
-                                            child: ElevatedButton(
-                                              style: ElevatedButton.styleFrom(
-                                                backgroundColor: Color(0xff4088f0),
-                                              ),
-                                              onPressed: () {
-                                                // 다시 하도록 유도
-                                                Navigator.push(context,
-                                                  MaterialPageRoute(builder: (context) => Tips(index: index))
-                                                );
-                                              },
-                                              child: Text('Finish',
-                                                style: TextStyle(
-                                                  fontFamily: 'Roboto',
-                                                  fontSize: 11.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white,
-                                                  height: 1.455,
-                                                  letterSpacing: 0.50,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                  ],
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            barrierColor: Colors.black.withOpacity(0.3199999928474426),
+                            builder: (context) {
+                              return Dialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(13.18),
                                 ),
-                              ),
-                            );
-                          }
-                      );
-                    },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Confirm',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontSize: 12.70,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                            height: 1.333,
-                            letterSpacing: 0.53,
+                                backgroundColor: Colors.white,
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                                  width: 324.27,
+                                  height: 166.14,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Achievement',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black,
+                                          height: 1.429,
+                                          letterSpacing: 0.10,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Image.asset('assets/analysis/analysis_${level.toLowerCase()}.png',
+                                            width: 35.21,
+                                          ),
+                                          SizedBox(
+                                            width: 15.0,
+                                          ),
+                                          SizedBox(
+                                            height: 53.06,
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(level == 'A' ? "You're a Stellar ACTor!" : level == 'B' ? 'ACTivate More' : 'reACT Again',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Color(0xff191c20),
+                                                    height: 1.5,
+                                                    letterSpacing: 0.15,
+                                                  ),
+                                                ),
+                                                Text.rich(
+                                                    TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'Similarity ',
+                                                          style: TextStyle(
+                                                            fontFamily: 'Roboto',
+                                                            fontSize: 14.0,
+                                                            fontWeight: FontWeight.w400,
+                                                            color: Colors.black,
+                                                            height: 1.429,
+                                                            letterSpacing: 0.25,
+                                                          ),
+                                                        ),
+                                                        TextSpan(
+                                                          text: level,
+                                                          style: TextStyle(
+                                                            fontFamily: 'Roboto',
+                                                            fontSize: 14.0,
+                                                            fontWeight: FontWeight.w400,
+                                                            color: Color(0xff4088f0),
+                                                            height: 1.429,
+                                                            letterSpacing: 0.25,
+                                                          ),
+                                                        ),
+                                                        TextSpan(
+                                                          text: ' | ${EmotionTitle[widget.index]}',
+                                                          style: TextStyle(
+                                                            fontFamily: 'Roboto',
+                                                            fontSize: 14.0,
+                                                            fontWeight: FontWeight.w400,
+                                                            color: Color(0xff74777f),
+                                                            height: 1.429,
+                                                            letterSpacing: 0.25,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      if (level == 'C')
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              width: 152.0,
+                                              height: 27.78,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Color(0xff4088f0),
+                                                ),
+                                                onPressed: () {
+                                                  _audioPlayer.stop().then((value) => widget.onDelete());
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text('Try Again',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 11.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white,
+                                                    height: 1.455,
+                                                    letterSpacing: 0.50,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      if (level == 'B')
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          children: [
+                                            SizedBox(
+                                              width: 85,
+                                              height: 27.78,
+                                              child: OutlinedButton(
+                                                style: OutlinedButton.styleFrom(
+                                                  side: BorderSide(
+                                                    width: 0.49,
+                                                    color: Colors.black.withOpacity(0.3199999928474426),
+                                                  ),
+                                                ),
+                                                onPressed: () => {
+                                                  Navigator.push(context,
+                                                      MaterialPageRoute(builder: (context) => Tips(index: index))
+                                                  )
+                                                },
+                                                child: Text('Finish',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 11.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Color(0xff4088f0),
+                                                    height: 1.455,
+                                                    letterSpacing: 0.50,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 6.26,
+                                            ),
+                                            SizedBox(
+                                              width: 105,
+                                              height: 27.78,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Color(0xff4088f0),
+                                                ),
+                                                onPressed: () {
+                                                  _audioPlayer.stop().then((value) => widget.onDelete());
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text('Try Again',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 11.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white,
+                                                    height: 1.455,
+                                                    letterSpacing: 0.50,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      if (level == 'A')
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              width: 152.0,
+                                              height: 27.78,
+                                              child: ElevatedButton(
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Color(0xff4088f0),
+                                                ),
+                                                onPressed: () {
+                                                  // 다시 하도록 유도
+                                                  Navigator.push(context,
+                                                      MaterialPageRoute(builder: (context) => Tips(index: index))
+                                                  );
+                                                },
+                                                child: Text('Finish',
+                                                  style: TextStyle(
+                                                    fontFamily: 'Roboto',
+                                                    fontSize: 11.0,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white,
+                                                    height: 1.455,
+                                                    letterSpacing: 0.50,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }
+                        );
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Confirm',
+                            style: TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 12.70,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                              height: 1.333,
+                              letterSpacing: 0.53,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 5.29,
-                        ),
-                        Icon(Icons.check_circle_outline,
-                          size: 17.99,
-                          color: Colors.white,
-                        ),
-                      ],
+                          SizedBox(
+                            width: 5.29,
+                          ),
+                          Icon(Icons.check_circle_outline,
+                            size: 17.99,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ],
         );
       },

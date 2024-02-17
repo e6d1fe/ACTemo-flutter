@@ -14,7 +14,7 @@ class Detail extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Container(
-            height: MediaQuery.of(context).size.height*0.80,
+            height: MediaQuery.of(context).size.height*0.90,
             width: MediaQuery.of(context).size.width*0.85,
             margin: const EdgeInsets.all(10),
             //padding: EdgeInsets.all(20),
