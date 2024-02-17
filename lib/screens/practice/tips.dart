@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:actemo_flutter/components/custom_appbar.dart';
 
+import 'package:actemo_flutter/screens/practice/emotionCard.dart';
+
 class Tips extends StatelessWidget {
-  const Tips({super.key});
+  const Tips({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -376,7 +379,11 @@ class Tips extends StatelessWidget {
                         backgroundColor: const Color(0xff4088f0),
                       ),
                       onPressed: () {
-                        // Navigate to Emotion Card page
+                        Navigator.push(context,
+                          MaterialPageRoute(builder: (context) =>
+                            emotionCard(index: index)
+                          )
+                        );
                       },
                       child: const Text('Continue',
                         style: TextStyle(

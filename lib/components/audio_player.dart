@@ -7,6 +7,8 @@ import 'package:just_audio/just_audio.dart' as ap;
 
 import 'package:actemo_flutter/data/contents.dart';
 
+import 'package:actemo_flutter/screens/practice/tips.dart';
+
 class AudioPlayer extends StatefulWidget {
   const AudioPlayer({
     required this.source,
@@ -22,7 +24,7 @@ class AudioPlayer extends StatefulWidget {
   final int index;
 
   @override
-  AudioPlayerState createState() => AudioPlayerState();
+  AudioPlayerState createState() => AudioPlayerState(index: index);
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -33,6 +35,9 @@ class AudioPlayer extends StatefulWidget {
 }
 
 class AudioPlayerState extends State<AudioPlayer> {
+  final int index;
+  AudioPlayerState({required this.index});
+
   static const double _controlSize = 43.77;
 
   final ap.AudioPlayer _audioPlayer = ap.AudioPlayer();
@@ -301,8 +306,10 @@ class AudioPlayerState extends State<AudioPlayer> {
                                                 color: Colors.black.withOpacity(0.3199999928474426),
                                               ),
                                             ),
-                                            onPressed: () {
-                                              // Navigator.of(context).pop();
+                                            onPressed: () => {
+                                            Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) => Tips(index: index))
+                                            )
                                             },
                                             child: Text('Finish',
                                               style: TextStyle(
@@ -357,7 +364,9 @@ class AudioPlayerState extends State<AudioPlayer> {
                                               ),
                                               onPressed: () {
                                                 // 다시 하도록 유도
-                                                Navigator.of(context).pop();
+                                                Navigator.push(context,
+                                                  MaterialPageRoute(builder: (context) => Tips(index: index))
+                                                );
                                               },
                                               child: Text('Finish',
                                                 style: TextStyle(
