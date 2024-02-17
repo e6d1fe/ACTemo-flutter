@@ -81,6 +81,8 @@ flutter:
     - assets/ACTion_appbar_icon.png
     - assets/READemo_appbar_icon.png
     - assets/images/dic/
+    - assets/analysis/
+    - assets/act_guide/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

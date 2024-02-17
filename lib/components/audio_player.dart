@@ -253,36 +253,36 @@ class AudioPlayerState extends State<AudioPlayer> {
                                         ),
                                       ],
                                     ),
-                                    // if (level == 'C')
-                                    //   Row(
-                                    //     mainAxisAlignment: MainAxisAlignment.center,
-                                    //     children: [
-                                    //       SizedBox(
-                                    //         width: 152.0,
-                                    //         height: 27.78,
-                                    //         child: ElevatedButton(
-                                    //           style: ElevatedButton.styleFrom(
-                                    //             backgroundColor: Color(0xff4088f0),
-                                    //           ),
-                                    //           onPressed: () {
-                                    //             _audioPlayer.stop().then((value) => widget.onDelete());
-                                    //             Navigator.of(context).pop();
-                                    //           },
-                                    //           child: Text('Try Again',
-                                    //             style: TextStyle(
-                                    //               fontFamily: 'Roboto',
-                                    //               fontSize: 11.0,
-                                    //               fontWeight: FontWeight.w500,
-                                    //               color: Colors.white,
-                                    //               height: 1.455,
-                                    //               letterSpacing: 0.50,
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
-                                    // if (level == 'B')
+                                    if (level == 'C')
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 152.0,
+                                            height: 27.78,
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: Color(0xff4088f0),
+                                              ),
+                                              onPressed: () {
+                                                _audioPlayer.stop().then((value) => widget.onDelete());
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Try Again',
+                                                style: TextStyle(
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 11.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                  height: 1.455,
+                                                  letterSpacing: 0.50,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    if (level == 'B')
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
@@ -297,7 +297,6 @@ class AudioPlayerState extends State<AudioPlayer> {
                                               ),
                                             ),
                                             onPressed: () {
-                                              // 다시 하도록 유도
                                               // Navigator.of(context).pop();
                                             },
                                             child: Text('Finish',
@@ -340,35 +339,35 @@ class AudioPlayerState extends State<AudioPlayer> {
                                         ),
                                       ],
                                     ),
-                                    // if (level == 'A')
-                                    //   Row(
-                                    //     mainAxisAlignment: MainAxisAlignment.center,
-                                    //     children: [
-                                    //       SizedBox(
-                                    //         width: 152.0,
-                                    //         height: 27.78,
-                                    //         child: ElevatedButton(
-                                    //           style: ElevatedButton.styleFrom(
-                                    //             backgroundColor: Color(0xff4088f0),
-                                    //           ),
-                                    //           onPressed: () {
-                                    //             // 다시 하도록 유도
-                                    //             Navigator.of(context).pop();
-                                    //           },
-                                    //           child: Text('Finish',
-                                    //             style: TextStyle(
-                                    //               fontFamily: 'Roboto',
-                                    //               fontSize: 11.0,
-                                    //               fontWeight: FontWeight.w500,
-                                    //               color: Colors.white,
-                                    //               height: 1.455,
-                                    //               letterSpacing: 0.50,
-                                    //             ),
-                                    //           ),
-                                    //         ),
-                                    //       ),
-                                    //     ],
-                                    //   ),
+                                    if (level == 'A')
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 152.0,
+                                            height: 27.78,
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: Color(0xff4088f0),
+                                              ),
+                                              onPressed: () {
+                                                // 다시 하도록 유도
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Finish',
+                                                style: TextStyle(
+                                                  fontFamily: 'Roboto',
+                                                  fontSize: 11.0,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                  height: 1.455,
+                                                  letterSpacing: 0.50,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                   ],
                                 ),
                               ),

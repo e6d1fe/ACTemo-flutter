@@ -6,7 +6,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'api_key.dart';
 
 import 'package:actemo_flutter/screens/start.dart';
-// import 'package:actemo_flutter/screens/identify/emotional_board.dart';
+import 'package:actemo_flutter/screens/practice/act.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Start(),
+      home: Act(),
     );
   }
 }
