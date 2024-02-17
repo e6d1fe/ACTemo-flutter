@@ -42,7 +42,7 @@ class _ListenState extends State<Listen> {
           ),
         ),
         body: Container(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -88,7 +88,7 @@ class _ListenState extends State<Listen> {
               ),
 
               // 상황 대본 chat
-              const SizedBox(height: 20,),
+              const SizedBox(height: 25,),
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: const BoxDecoration(
@@ -109,7 +109,7 @@ class _ListenState extends State<Listen> {
                     ),
                     const SizedBox(height: 10,),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height*0.3,
+                      height: MediaQuery.of(context).size.height*0.25,
                       child: chat(index: index),
                     ),
                   ],
@@ -117,26 +117,31 @@ class _ListenState extends State<Listen> {
               ),
 
               // AI 대본
-
-              const Text('Listen to the acting of AI voice actor',
-                style: TextStyle(
-                  color: Color(0xFF191C20),
-                  fontSize: 16,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.10,
+              const SizedBox(height: 25,),
+              const Center(
+                child: Text('Listen to the acting of AI voice actor',
+                  style: TextStyle(
+                    color: Color(0xFF191C20),
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.10,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
+              const SizedBox(height: 5,),
+
+              // 녹음본 재생 넣기
 
 
               // 페이지 이동
-
+              const SizedBox(height: 30,),
               Align(
                 alignment: Alignment.bottomRight,
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(0,0,20,20),
-                  padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  //padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   height: 40,
                   width: 100,
                   decoration: BoxDecoration(
@@ -147,22 +152,24 @@ class _ListenState extends State<Listen> {
                     //Navigator.push(context,
                         //MaterialPageRoute(builder: (context) => act(index: index))),
                   },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Next',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w500,
-                          )
-                        ),
-                        SizedBox(width: 5,),
-                        Icon(Icons.navigate_next, color: Colors.white,)
-                      ],
+                    child: const Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Next',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w500,
+                            )
+                          ),
+                          //SizedBox(width: 5,),
+                          Icon(Icons.navigate_next, color: Colors.white,)
+                        ],
+                      ),
                     )
                   ),
                 ),
