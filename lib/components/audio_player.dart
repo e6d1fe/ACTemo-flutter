@@ -187,7 +187,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                                     ),
                                     Row(
                                       children: [
-                                        Image.asset('assets/analysis_${level.toLowerCase()}.png',
+                                        Image.asset('assets/analysis/analysis_${level.toLowerCase()}.png',
                                           width: 35.21,
                                         ),
                                         SizedBox(
