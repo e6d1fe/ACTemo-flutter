@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:actemo_flutter/components/navbar.dart';
 import 'package:actemo_flutter/components/custom_appbar.dart';
 
 import 'package:actemo_flutter/utils/emotion_list.dart';
@@ -270,85 +269,75 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                             Row(
                               children: [
                                 // unpleasant
-                                GestureDetector(
-                                  onTap: () {
-                                    debugPrint('unpleasant container was tapped');
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.only(top: 7.19, left: 9.0),
-                                    width: 161.0,
-                                    height: 103.0,
-                                    decoration: BoxDecoration(
-                                      gradient: widget.emotionCategory != 2 ? null : const LinearGradient(
-                                        begin: Alignment(0.55, -0.83),
-                                        end: Alignment(-0.55, 0.83),
-                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
-                                      ),
-                                      color: widget.emotionCategory == 2 ? null : Colors.white,
-                                      border: const Border(
-                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                      ),
+                                Container(
+                                  padding: const EdgeInsets.only(top: 7.19, left: 9.0),
+                                  width: 161.0,
+                                  height: 103.0,
+                                  decoration: BoxDecoration(
+                                    gradient: widget.emotionCategory != 2 ? null : const LinearGradient(
+                                      begin: Alignment(0.55, -0.83),
+                                      end: Alignment(-0.55, 0.83),
+                                      colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Unpleasant',
-                                          style: TextStyle(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: widget.emotionCategory == 2 ? Colors.white : const Color(0xffdddfe5),
-                                            height: 1.5,
-                                            letterSpacing: 0.50,
-                                          ),
+                                    color: widget.emotionCategory == 2 ? null : Colors.white,
+                                    border: const Border(
+                                      top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                      left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Unpleasant',
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: widget.emotionCategory == 2 ? Colors.white : const Color(0xffdddfe5),
+                                          height: 1.5,
+                                          letterSpacing: 0.50,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 // activation
-                                GestureDetector(
-                                  onTap: () {
-                                    debugPrint('activation container was tapped');
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.only(top: 7.19, right: 9.0),
-                                    width: 161.0,
-                                    height: 103.0,
-                                    decoration: BoxDecoration(
-                                      gradient: widget.emotionCategory != 3 ? null : const LinearGradient(
-                                        begin: Alignment(0.55, -0.83),
-                                        end: Alignment(-0.55, 0.83),
-                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
-                                      ),
-                                      color: widget.emotionCategory == 3 ? null : Colors.white,
-                                      border: const Border(
-                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                      ),
+                                Container(
+                                  padding: const EdgeInsets.only(top: 7.19, right: 9.0),
+                                  width: 161.0,
+                                  height: 103.0,
+                                  decoration: BoxDecoration(
+                                    gradient: widget.emotionCategory != 3 ? null : const LinearGradient(
+                                      begin: Alignment(0.55, -0.83),
+                                      end: Alignment(-0.55, 0.83),
+                                      colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text('Activation',
-                                          style: TextStyle(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: widget.emotionCategory == 3 ? Colors.white : const Color(0xffdddfe5),
-                                            height: 1.5,
-                                            letterSpacing: 0.50,
-                                          ),
+                                    color: widget.emotionCategory == 3 ? null : Colors.white,
+                                    border: const Border(
+                                      top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                      left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text('Activation',
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: widget.emotionCategory == 3 ? Colors.white : const Color(0xffdddfe5),
+                                          height: 1.5,
+                                          letterSpacing: 0.50,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -357,85 +346,75 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                             Row(
                               children: [
                                 // deactivation
-                                GestureDetector(
-                                  onTap: () {
-                                    debugPrint('deactivation container was tapped');
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.only(bottom: 7.19, left: 9.0),
-                                    width: 161.0,
-                                    height: 103.0,
-                                    decoration: BoxDecoration(
-                                      gradient: widget.emotionCategory != 1 ? null : const LinearGradient(
-                                        begin: Alignment(0.55, -0.83),
-                                        end: Alignment(-0.55, 0.83),
-                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
-                                      ),
-                                      color: widget.emotionCategory == 1 ? null : Colors.white,
-                                      border: const Border(
-                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                      ),
+                                Container(
+                                  padding: const EdgeInsets.only(bottom: 7.19, left: 9.0),
+                                  width: 161.0,
+                                  height: 103.0,
+                                  decoration: BoxDecoration(
+                                    gradient: widget.emotionCategory != 1 ? null : const LinearGradient(
+                                      begin: Alignment(0.55, -0.83),
+                                      end: Alignment(-0.55, 0.83),
+                                      colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Deactivation',
-                                          style: TextStyle(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: widget.emotionCategory == 1 ? Colors.white : const Color(0xffdddfe5),
-                                            height: 1.5,
-                                            letterSpacing: 0.50,
-                                          ),
+                                    color: widget.emotionCategory == 1 ? null : Colors.white,
+                                    border: const Border(
+                                      top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                      left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Deactivation',
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: widget.emotionCategory == 1 ? Colors.white : const Color(0xffdddfe5),
+                                          height: 1.5,
+                                          letterSpacing: 0.50,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 // pleasant
-                                GestureDetector(
-                                  onTap: () {
-                                    debugPrint('pleasant container was tapped');
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.only(bottom: 7.19, right: 9.0),
-                                    width: 161.0,
-                                    height: 103.0,
-                                    decoration: BoxDecoration(
-                                      gradient: widget.emotionCategory != 0 ? null : const LinearGradient(
-                                        begin: Alignment(0.55, -0.83),
-                                        end: Alignment(-0.55, 0.83),
-                                        colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
-                                      ),
-                                      color: widget.emotionCategory == 0 ? null : Colors.white,
-                                      border: const Border(
-                                        top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                        left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
-                                        right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
-                                      ),
+                                Container(
+                                  padding: const EdgeInsets.only(bottom: 7.19, right: 9.0),
+                                  width: 161.0,
+                                  height: 103.0,
+                                  decoration: BoxDecoration(
+                                    gradient: widget.emotionCategory != 0 ? null : const LinearGradient(
+                                      begin: Alignment(0.55, -0.83),
+                                      end: Alignment(-0.55, 0.83),
+                                      colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment: CrossAxisAlignment.end,
-                                      children: [
-                                        Text('Pleasant',
-                                          style: TextStyle(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w400,
-                                            color: widget.emotionCategory == 0 ? Colors.white : const Color(0xffdddfe5),
-                                            height: 1.5,
-                                            letterSpacing: 0.50,
-                                          ),
+                                    color: widget.emotionCategory == 0 ? null : Colors.white,
+                                    border: const Border(
+                                      top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                      left: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
+                                      right: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text('Pleasant',
+                                        style: TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: widget.emotionCategory == 0 ? Colors.white : const Color(0xffdddfe5),
+                                          height: 1.5,
+                                          letterSpacing: 0.50,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
