@@ -1,4 +1,3 @@
-import 'package:actemo_flutter/data/contents.dart';
 import 'package:flutter/material.dart';
 import 'package:actemo_flutter/data/script.dart';
 
@@ -22,13 +21,13 @@ class chat extends StatelessWidget {
           return Align(
             alignment: chatIndex.isEven ? Alignment.centerLeft : Alignment.centerRight,
             child: Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(0.0),
               child: Column(
                 crossAxisAlignment: alignment,
                 children: [
                   Text(
                     name,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Color(0xFF44474E),
                       fontSize: 12,
                       fontFamily: 'Roboto',
@@ -37,18 +36,18 @@ class chat extends StatelessWidget {
                       letterSpacing: 0.50,
                     ),
                   ),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Container(
-                    padding: EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
-                      color: chatIndex.isEven ? Color(0xFFE7E8EE) : Color(0xFFB0F1C3),
+                      color: chatIndex.isEven ? const Color(0xFFE7E8EE) : const Color(0xFFB0F1C3),
                       borderRadius: chatIndex.isEven ?
-                        BorderRadius.only(
+                        const BorderRadius.only(
                           topRight: Radius.circular(26.46),
                           bottomLeft: Radius.circular(26.46),
                           bottomRight: Radius.circular(26.46),
                         ) :
-                        BorderRadius.only(
+                        const BorderRadius.only(
                           topLeft: Radius.circular(26.46),
                           bottomLeft: Radius.circular(26.46),
                           bottomRight: Radius.circular(26.46),
@@ -57,7 +56,7 @@ class chat extends StatelessWidget {
                     child: Flexible(
                       child: Text(
                         message,
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Color(0xFF001B3E),
                           fontSize: 12,
                           fontFamily: 'Roboto',
@@ -69,7 +68,7 @@ class chat extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,)
+                  const SizedBox(height: 20,)
 
                 ],
               ),

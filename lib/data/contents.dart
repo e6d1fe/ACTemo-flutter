@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class information {
   final String title;
@@ -7,8 +6,9 @@ class information {
   final String situation;
   final String letter;
   final String category;
+  final String emoji;
   bool isSaved;
-  information(this.title, this.imagepath, this.definition, this.situation, this.letter, this.category, this.isSaved);
+  information(this.title, this.imagepath, this.definition, this.situation, this.letter, this.category, this.emoji, this.isSaved);
 
   information.fromMap(Map)
       : this.title = Map['title'],
@@ -17,12 +17,15 @@ class information {
         this.situation = Map['situation'],
         this.letter = Map['letter'],
         this.category = Map['category'],
-        this.isSaved = false;
+        this.emoji = Map['emoji'],
+        this.isSaved = Map['isSaved'];
 }
 
 information surprised = information.fromMap({
   'title' : 'Surprised',
   'letter' : 'S',
+  'isSaved' : false,
+  'emoji' : '😲',
   'category' : 'Activation',
   'imagepath' : 'assets/images/dic/surprised.png',
   'definition' : 'A sudden feeling of astonishment or disbelief, often accompanied by a sense of wonder.',
@@ -32,6 +35,8 @@ information surprised = information.fromMap({
 information excited = information.fromMap({
   'title' : 'Excited',
   'letter' : 'E',
+  'isSaved' : false,
+  'emoji' : '🤪',
   'category' : 'Activation',
   'imagepath' : 'assets/images/dic/excited.png',
   'definition' : 'A heightened state of enthusiasm and anticipation, often linked to positive expectations.',
@@ -41,6 +46,8 @@ information excited = information.fromMap({
 information joyous = information.fromMap({
   'title' : 'Joyous',
   'letter' : 'J',
+  'isSaved' : false,
+  'emoji' : '🤣',
   'category' : 'Activation',
   'imagepath' : 'assets/images/dic/joyous.png',
   'definition' : 'Receiving good news, Planning a long-awaited vacation, Achieving a personal milestone.',
@@ -50,6 +57,8 @@ information joyous = information.fromMap({
 information happy = information.fromMap({
   'title' : 'Happy',
   'letter' : 'H',
+  'isSaved' : false,
+  'emoji' : '😊',
   'category' : 'Activation',
   'imagepath' : 'assets/images/dic/happy.png',
   'definition' : 'A general sense of contentment and satisfaction with life.',
@@ -59,6 +68,8 @@ information happy = information.fromMap({
 information content = information.fromMap({
   'title' : 'Content',
   'letter' : 'C',
+  'isSaved' : false,
+  'emoji' : '🙂',
   'category' : 'Pleasant',
   'imagepath' : 'assets/images/dic/content.png',
   'definition' : 'A state of peaceful satisfaction and fulfillment.',
@@ -68,6 +79,8 @@ information content = information.fromMap({
 information relaxed = information.fromMap({
   'title' : 'Relaxed',
   'letter' : 'R',
+  'isSaved' : false,
+  'emoji' : '😌',
   'category' : 'Pleasant',
   'imagepath' : 'assets/images/dic/relaxed.png',
   'definition' : 'A calm and untroubled state of mind and body.',
@@ -77,6 +90,8 @@ information relaxed = information.fromMap({
 information calm = information.fromMap({
   'title' : 'Calm',
   'letter' : 'C',
+  'isSaved' : false,
+  'emoji' : '😶‍🌫️',
   'category' : 'Pleasant',
   'imagepath' : 'assets/images/dic/calm.png',
   'definition' : 'A serene and composed state of being, free from agitation.',
@@ -84,8 +99,10 @@ information calm = information.fromMap({
 );
 
 information sleepy = information.fromMap({
-  'title' : 'sleepy',
+  'title' : 'Sleepy',
   'letter' : 'S',
+  'isSaved' : false,
+  'emoji' : '🥱',
   'category' : 'Deactivation',
   'imagepath' : 'assets/images/dic/sleepy.png',
   'definition' : 'A state of drowsiness and the desire for rest or sleep.',
@@ -95,6 +112,8 @@ information sleepy = information.fromMap({
 information bored = information.fromMap({
   'title' : 'Bored',
   'letter' : 'B',
+  'isSaved' : false,
+  'emoji' : '😑',
   'category' : 'Deactivation',
   'imagepath' : 'assets/images/dic/bored.png',
   'definition' : 'A feeling of weariness and dissatisfaction due to lack of interest or stimulation.',
@@ -104,6 +123,8 @@ information bored = information.fromMap({
 information sad = information.fromMap({
   'title' : 'Sad',
   'letter' : 'S',
+  'isSaved' : false,
+  'emoji' : '😢',
   'category' : 'Deactivation',
   'imagepath' : 'assets/images/dic/sad.png',
   'definition' : 'A state of emotional pain or sorrow.',
@@ -113,6 +134,8 @@ information sad = information.fromMap({
 information depressed = information.fromMap({
   'title' : 'Depressed',
   'letter' : 'D',
+  'isSaved' : false,
+  'emoji' : '😔',
   'category' : 'Deactivation',
   'imagepath' : 'assets/images/dic/depressed.png',
   'definition' : 'A persistent and profound feeling of sadness, often accompanied by a sense of hopelessness.',
@@ -122,6 +145,8 @@ information depressed = information.fromMap({
 information distressed = information.fromMap({
   'title' : 'distressed',
   'letter' : 'D',
+  'isSaved' : false,
+  'emoji' : '😟',
   'category' : 'Unpleasant',
   'imagepath' : 'assets/images/dic/sad.png',
   'definition' : 'A state of extreme anxiety or emotional suffering.',
@@ -131,6 +156,8 @@ information distressed = information.fromMap({
 information angry = information.fromMap({
   'title' : 'Angry',
   'letter' : 'A',
+  'isSaved' : false,
+  'emoji' : '😡',
   'category' : 'Unpleasant',
   'imagepath' : 'assets/images/dic/angry.png',
   'definition' : 'A strong feeling of displeasure or resentment often triggered by perceived injustice.',
@@ -140,6 +167,8 @@ information angry = information.fromMap({
 information afraid = information.fromMap({
   'title' : 'Afraid',
   'letter' : 'A',
+  'isSaved' : false,
+  'emoji' : '😨',
   'category' : 'Unpleasant',
   'imagepath' : 'assets/images/dic/afraid.png',
   'definition' : 'A feeling of distress or apprehension caused by the presence or anticipation of danger.',
@@ -280,4 +309,21 @@ final List<bool> EmotionSaved = [
   sad.isSaved,
   sleepy.isSaved,
   surprised.isSaved
+];
+
+final List<String> EmotionEmoji = [
+  afraid.emoji,
+  angry.emoji,
+  bored.emoji,
+  calm.emoji,
+  content.emoji,
+  depressed.emoji,
+  distressed.emoji,
+  excited.emoji,
+  happy.emoji,
+  joyous.emoji,
+  relaxed.emoji,
+  sad.emoji,
+  sleepy.emoji,
+  surprised.emoji
 ];

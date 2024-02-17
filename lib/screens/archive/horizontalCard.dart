@@ -7,6 +7,7 @@ Container HorizontalCard(context, index){
     height: 80,
     width: 240,
     margin: const EdgeInsets.only(bottom: 15),
+    //padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
       color: Color(0xFFD7E3FF),
       //borderRadius: BorderRadius.circular(12),
@@ -14,7 +15,7 @@ Container HorizontalCard(context, index){
     child: Stack(
       children: [
         Container(
-          padding: EdgeInsets.only(left: 10, top: 7),
+          padding: EdgeInsets.only(left: 20, top: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -25,18 +26,22 @@ Container HorizontalCard(context, index){
                   Text('${EmotionTitle[index]}',
                     style: TextStyle(
                       color: Color(0xFF001B3E),
-                      fontSize: 24,
+                      fontSize: 20,
                       fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w500,),),
-                  SizedBox(height: 3,),
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.48,
+                    ),
+                  ),
                   SizedBox(
-                      width: 250,
+                      width: 240,
                       child: Text('${EmotionDefinition[index]}',
                         style: TextStyle(
                           color: Color(0xFF001B3E),
                           fontSize: 16,
                           fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,),
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.24
+                        ),
                         overflow: TextOverflow.ellipsis,)),
                 ],),
               Container(

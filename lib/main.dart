@@ -9,7 +9,6 @@ import 'package:actemo_flutter/screens/start.dart';
 
 import 'package:actemo_flutter/screens/identify/emotional_board.dart';
 
-import 'package:actemo_flutter/screens/practice/AudioPlayer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -21,11 +21,12 @@ class _ArchiveState extends State<Archive> {
           backgroundColor: const Color(0xffededf4),
           title: const Text('Archive',
             style: TextStyle(
-              fontFamily: 'Roboto',
-              fontSize: 16.0,
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
+              fontFamily: 'Google Sans',
+              fontWeight: FontWeight.w700,
+              height: 0.09,
               letterSpacing: 0.15,
+              fontSize: 16.0,
+              color: Color(0xFF00210F)
             ),
           ),
           centerTitle: true,
@@ -38,7 +39,7 @@ class _ArchiveState extends State<Archive> {
         ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -49,7 +50,7 @@ class _ArchiveState extends State<Archive> {
                     buildCategoryButton('Activation'),
                   ],
                 ),
-                SizedBox(height: 15,),
+                const SizedBox(height: 15,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,17 +58,21 @@ class _ArchiveState extends State<Archive> {
                     buildCategoryButton('Pleasant'),
                   ],
                 ),
-                SizedBox(height: 20,),
-                Divider(thickness: 1, height: 1, color: Color(0xffCAC4D0),),
-                SizedBox(height: 20,),
-                Text('Emotion List',
+                const SizedBox(height: 40,),
+                const Divider(thickness: 1, height: 1, color: Color(0xffCAC4D0),),
+                const SizedBox(height: 40,),
+                const Text('Emotion List',
                   style: TextStyle(
-                    fontSize: 20, fontFamily: 'Roboto', fontWeight: FontWeight.w800, letterSpacing: 0.15,
+                    fontSize: 20,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 0.15,
+                    height: 0.09
                   ),
                   textAlign: TextAlign.left,
                 ),
-                SizedBox(height: 15,),
-                Container(
+                const SizedBox(height: 25,),
+                SizedBox(
                   height: 330,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
@@ -107,31 +112,36 @@ class _ArchiveState extends State<Archive> {
             borderRadius: BorderRadius.circular(12), // Angular shape
           ),),
         side: MaterialStateProperty.all<BorderSide>(
-          BorderSide(color: Colors.grey), // Border color
+          const BorderSide(color: Color(0xFFDDDFE5)), // Border color
         ),
-        backgroundColor: MaterialStateProperty.all(selectedCategory == category ? Colors.grey : null)),
-    child: Container(
+        backgroundColor: MaterialStateProperty.all(selectedCategory == category ? const Color(0xFFE2E2E9) : const Color(0xFFF3F3FA))),
+    child: SizedBox(
       width: MediaQuery.of(context).size.width*0.3,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10,),
-          Text(category, style: TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w500,
-          ),),
-          SizedBox(height: 5,),
+          const SizedBox(height: 10,),
+          Text(category,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.1,
+            ),
+            textAlign: TextAlign.left,
+          ),
+          const SizedBox(height: 5,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 50,),
+              const SizedBox(width: 50,),
               SizedBox(
                 width: 50,
-                child: Image.asset('assets/category/${category}.png')),
+                child: Image.asset('assets/category/$category.png')),
             ],
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
         ],
       )),
     );
