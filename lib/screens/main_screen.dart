@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'package:actemo_flutter/screens/identify/instructions.dart';
 
@@ -7,20 +6,6 @@ import 'package:actemo_flutter/components/navbar.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
-
-  String getSystemTime() {
-    var now = DateTime.now();
-    return DateFormat('h:mm').format(now);
-  }
-
-  String getSystemDate() {
-    var now = DateTime.now();
-    String weekday = DateFormat.MMMMEEEEd().format(now).split(' ')[0].substring(0, 3);
-    String month = DateFormat.MMMMEEEEd().format(now).split(' ')[1].substring(0, 3);
-    String day = DateFormat.MMMMEEEEd().format(now).split(' ')[2];
-
-    return '$weekday, $month $day';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +23,13 @@ class MainScreen extends StatelessWidget {
                 width: 218.0,
               ),
               const SizedBox(
-                height: 14.62,
+                height: 20.0,
               ),
               Image.asset('assets/logos/actemo_logo_letter.png',
                 width: 192.0,
               ),
               const SizedBox(
-                height: 25.76,
+                height: 20.0,
               ),
               const Padding(
                 padding: EdgeInsets.all(35.0),
