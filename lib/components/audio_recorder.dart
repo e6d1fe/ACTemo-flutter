@@ -64,7 +64,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
               const SizedBox(
                 width: 10.0,
               ),
-              Image.asset('assets/volume.png',
+              Image.asset('assets/act_guide/volume.png',
                 height: 41.03,
               ),
               const SizedBox(
@@ -111,7 +111,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
               const SizedBox(
                 width: 10.0,
               ),
-              Image.asset('assets/intonation.png',
+              Image.asset('assets/act_guide/intonation.png',
                 height: 41.03,
               ),
               const SizedBox(
