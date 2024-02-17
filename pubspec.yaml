@@ -84,6 +84,7 @@ flutter:
     - assets/analysis/
     - assets/act_guide/
     - assets/objects/
+    - assets/tips/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
