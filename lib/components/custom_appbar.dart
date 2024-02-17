@@ -9,7 +9,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: const Color(0xffededf4),
       centerTitle: true,
-      title: Image.asset('assets/${location}_appbar_icon.png'),
+      title: Image.asset('assets/${location}_appbar_icon.png',
+        height: 15.0,
+      ),
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();

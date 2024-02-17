@@ -5,9 +5,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 
 import 'api_key.dart';
 
-import 'package:actemo_flutter/screens/start.dart';
 import 'package:actemo_flutter/screens/walkthrough/walkthrough1.dart';
-import 'package:actemo_flutter/screens/practice/tips.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: Walkthrough1(),
-      home: Tips(),
+      home: Walkthrough1(),
     );
   }
 }
