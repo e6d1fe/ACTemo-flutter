@@ -104,20 +104,6 @@ class _ListenState extends State<Listen> {
 
             // AI 대본
             const SizedBox(height: 25,),
-            const Center(
-              child: Text(
-                'Listen to the acting of AI voice actor',
-                style: TextStyle(
-                  color: Color(0xFF191C20),
-                  fontSize: 16,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.10,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 5,),
 
             // 녹음본 재생 넣기
             AudioPlayer(
