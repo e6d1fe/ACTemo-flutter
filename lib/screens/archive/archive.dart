@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:actemo_flutter/components/custom_appbar.dart';
+
 import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/screens/archive/horizontalCard.dart';
 
@@ -17,24 +19,7 @@ class _ArchiveState extends State<Archive> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('Archive',
-          style: TextStyle(
-            fontFamily: 'Google Sans',
-            fontWeight: FontWeight.w700,
-            height: 0.09,
-            letterSpacing: 0.15,
-            fontSize: 16.0,
-            color: Color(0xFF00210F)
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: (){Navigator.pop(context);},
-          icon: const Icon(Icons.chevron_left, size: 24.0,),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'Archive'),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),

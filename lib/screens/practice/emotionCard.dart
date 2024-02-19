@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flip_card/flip_card.dart';
 
 import 'package:actemo_flutter/components/navbar.dart';
+import 'package:actemo_flutter/components/custom_appbar.dart';
 
 import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/screens/main_screen.dart';
@@ -24,29 +25,7 @@ class _emotionCardState extends State<emotionCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffededf4),
-        title: const Text('ACTion',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Color(0xFF2C6A46),
-            fontSize: 16,
-            fontFamily: 'Google Sans',
-            fontWeight: FontWeight.w700,
-            height: 0.09,
-            letterSpacing: 0.15,
-          ),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.chevron_left,
-            size: 24.0,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(location: 'Archive'),
       body: Center(
         child: Container(
           padding: const EdgeInsets.all(20),
