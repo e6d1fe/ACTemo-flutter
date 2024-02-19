@@ -109,7 +109,7 @@ information relaxed = information.fromMap({
 information calm = information.fromMap({
   'title' : 'Calm',
   'letter' : 'C',
-  'emoji' : '😶‍🌫️',
+  'emoji' : '😶‍🌫',
   'category' : 'Pleasant',
   'isSaved' : false,
   'imagepath' : 'assets/images/dic/calm.png',
