@@ -39,8 +39,6 @@ dependencies:
   google_fonts: ^6.1.0
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
-  intl: ^0.19.0
-  timer_builder: ^2.0.0
   flutter_gemini: ^2.0.1
   flutter_sound_record: ^3.3.2
   just_audio: ^0.9.36
