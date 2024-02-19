@@ -1,23 +1,3 @@
-import 'package:provider/provider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-
-
-class SaveEmotion with ChangeNotifier{
-  final int EmotionIndex;
-  List<bool> _isSavedList = List<bool>.filled(14, false);
-
-  SaveEmotion({required this.EmotionIndex});
-
-  List<bool> get isSavedList => List.from(_isSavedList);
-  bool get isSaved => _isSavedList[EmotionIndex];
-
-  void saveEmotion() {
-    _isSavedList[EmotionIndex] = true;
-    notifyListeners();
-  }
-}
-
 class information {
   final String title;
   final String imagepath;

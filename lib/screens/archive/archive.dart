@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:actemo_flutter/data/contents.dart';
 import 'package:actemo_flutter/screens/archive/horizontalCard.dart';
 
@@ -110,8 +111,7 @@ class _ArchiveState extends State<Archive> {
           ),
         ),
         side: MaterialStateProperty.all<BorderSide>(
-          const BorderSide(color: Color(0xFFDDDFE5)
-          ), // Border color
+          const BorderSide(color: Color(0xFFDDDFE5)), // Border color
         ),
       backgroundColor: MaterialStateProperty.all(selectedCategory == category ? const Color(0xFFE2E2E9) : const Color(0xFFF3F3FA))),
       child: SizedBox(

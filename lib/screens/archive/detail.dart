@@ -17,10 +17,10 @@ class Detail extends StatelessWidget {
             height: MediaQuery.of(context).size.height*0.90,
             width: MediaQuery.of(context).size.width*0.85,
             margin: const EdgeInsets.all(10),
-            //padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: const Color(0xFFCEE5FF),
-              borderRadius: BorderRadius.circular(12)),
+              borderRadius: BorderRadius.circular(12)
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,8 +53,7 @@ class Detail extends StatelessWidget {
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),),
                       height: MediaQuery.of(context).size.width*0.55,
                       width: MediaQuery.of(context).size.width,
-                      child:Image.asset(EmotionPath[index],
-                        fit: BoxFit.fitWidth)
+                      child:Image.asset(EmotionPath[index], fit: BoxFit.fitWidth)
                     ),
                     const SizedBox(height: 15),
                     Container(
