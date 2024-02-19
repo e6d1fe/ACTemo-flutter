@@ -187,83 +187,18 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                 ),
               ),
               const SizedBox(
-                height: 27.03,
+                height: 28.06,
               ),
               // emotion coordinate
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // based on russell's circumplex model
-                  const Text("Based on Russell's Circumplex Model",
-                    style: TextStyle(
-                      fontFamily: 'Roboto',
-                      fontSize: 11.0,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff44474e),
-                      height: 1.455,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5.01,
-                  ),
-                  // y axis scale & containers
+                  // containers
                   SizedBox(
                     height: 206.0,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // y axis scale
-                        const Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            // high
-                            RotatedBox(
-                                quarterTurns: 3,
-                                child: Text("High",
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 11.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xfff0f0f7),
-                                    height: 1.455,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                            ),
-                            // valence
-                            RotatedBox(
-                                quarterTurns: 3,
-                                child: Text("Valence",
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 11.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xff74777f),
-                                    height: 1.455,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                            ),
-                            // low
-                            RotatedBox(
-                                quarterTurns: 3,
-                                child: Text("Low",
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 11.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xfff0f0f7),
-                                    height: 1.455,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          width: 6.24,
-                        ),
                         // containers
                         Column(
                           children: [
@@ -426,62 +361,38 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 6.24,
+                ],
+              ),
+              const SizedBox(
+                height: 20.76,
+              ),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text("Based On Russell's Circumplex Model",
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 11.0,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff44474e),
+                      height: 1.333,
+                      letterSpacing: 0.50,
+                    ),
                   ),
-                  // x axis scale
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width - 55.48 - 322.0,
-                      ),
-                      const SizedBox(
-                        width: 322.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text('Low',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 11.0,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xfff0f0f7),
-                                height: 1.455,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                            // arousal
-                            Text('Arousal',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 11.0,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xff74777f),
-                                height: 1.455,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                            // low
-                            Text('High',
-                              style: TextStyle(
-                                fontFamily: 'Roboto',
-                                fontSize: 11.0,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xfff0f0f7),
-                                height: 1.455,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  Text('Vertical Axis: Arousal / Horizontal Axis: Valence',
+                    style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 9.0,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff44474e),
+                      height: 1.778,
+                      letterSpacing: 0.50,
+                    ),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 25.53,
+                height: 20.76,
               ),
               const Text('Predicted Emotions',
                 style: TextStyle(
