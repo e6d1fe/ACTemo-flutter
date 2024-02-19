@@ -211,12 +211,12 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   width: 161.0,
                                   height: 103.0,
                                   decoration: BoxDecoration(
-                                    gradient: widget.emotionCategory != 2 ? null : const LinearGradient(
+                                    gradient: widget.emotionCategory != 3 ? null : const LinearGradient(
                                       begin: Alignment(0.55, -0.83),
                                       end: Alignment(-0.55, 0.83),
                                       colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    color: widget.emotionCategory == 2 ? null : Colors.white,
+                                    color: widget.emotionCategory == 3 ? null : Colors.white,
                                     border: const Border(
                                       top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                       bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
@@ -233,7 +233,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                           fontFamily: 'Roboto',
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w400,
-                                          color: widget.emotionCategory == 2 ? Colors.white : const Color(0xffdddfe5),
+                                          color: widget.emotionCategory == 3 ? Colors.white : const Color(0xffdddfe5),
                                           height: 1.5,
                                           letterSpacing: 0.50,
                                         ),
@@ -247,12 +247,12 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   width: 161.0,
                                   height: 103.0,
                                   decoration: BoxDecoration(
-                                    gradient: widget.emotionCategory != 3 ? null : const LinearGradient(
+                                    gradient: widget.emotionCategory != 0 ? null : const LinearGradient(
                                       begin: Alignment(0.55, -0.83),
                                       end: Alignment(-0.55, 0.83),
                                       colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    color: widget.emotionCategory == 3 ? null : Colors.white,
+                                    color: widget.emotionCategory == 0 ? null : Colors.white,
                                     border: const Border(
                                       top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                       bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
@@ -269,7 +269,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                           fontFamily: 'Roboto',
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w400,
-                                          color: widget.emotionCategory == 3 ? Colors.white : const Color(0xffdddfe5),
+                                          color: widget.emotionCategory == 0 ? Colors.white : const Color(0xffdddfe5),
                                           height: 1.5,
                                           letterSpacing: 0.50,
                                         ),
@@ -288,12 +288,12 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   width: 161.0,
                                   height: 103.0,
                                   decoration: BoxDecoration(
-                                    gradient: widget.emotionCategory != 1 ? null : const LinearGradient(
+                                    gradient: widget.emotionCategory != 2 ? null : const LinearGradient(
                                       begin: Alignment(0.55, -0.83),
                                       end: Alignment(-0.55, 0.83),
                                       colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    color: widget.emotionCategory == 1 ? null : Colors.white,
+                                    color: widget.emotionCategory == 2 ? null : Colors.white,
                                     border: const Border(
                                       top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                       bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
@@ -310,7 +310,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                           fontFamily: 'Roboto',
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w400,
-                                          color: widget.emotionCategory == 1 ? Colors.white : const Color(0xffdddfe5),
+                                          color: widget.emotionCategory == 2 ? Colors.white : const Color(0xffdddfe5),
                                           height: 1.5,
                                           letterSpacing: 0.50,
                                         ),
@@ -324,12 +324,12 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                   width: 161.0,
                                   height: 103.0,
                                   decoration: BoxDecoration(
-                                    gradient: widget.emotionCategory != 0 ? null : const LinearGradient(
+                                    gradient: widget.emotionCategory != 1 ? null : const LinearGradient(
                                       begin: Alignment(0.55, -0.83),
                                       end: Alignment(-0.55, 0.83),
                                       colors: [Color(0xFF4285F4), Color(0xFFAEDCBA)],
                                     ),
-                                    color: widget.emotionCategory == 0 ? null : Colors.white,
+                                    color: widget.emotionCategory == 1 ? null : Colors.white,
                                     border: const Border(
                                       top: BorderSide(width: 1, color: Color(0xFFDDDFE5)),
                                       bottom: BorderSide(width: 0.50, color: Color(0xFFDDDFE5)),
@@ -346,7 +346,7 @@ class _EmotionalBoardState extends State<EmotionalBoard> {
                                           fontFamily: 'Roboto',
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.w400,
-                                          color: widget.emotionCategory == 0 ? Colors.white : const Color(0xffdddfe5),
+                                          color: widget.emotionCategory == 1 ? Colors.white : const Color(0xffdddfe5),
                                           height: 1.5,
                                           letterSpacing: 0.50,
                                         ),

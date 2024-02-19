@@ -83,7 +83,9 @@ class _IdentifyCompleteState extends State<IdentifyComplete> {
                       emotionCategory = getEmotionCategory(valence!, arousal!);
                     });
 
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory, valenceString: valence == 'positive' ? 'Low' : 'High', arousalString: arousal == 'high' ? 'High' : 'Low')));
+                    debugPrint(emotionCategory.toString());
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmotionalBoard(emotionCategory: emotionCategory, valenceString: valence == 'positive' ? 'High' : 'Low', arousalString: arousal == 'high' ? 'High' : 'Low')));
                   },
                   child: const Text('Continue',
                     style: TextStyle(
