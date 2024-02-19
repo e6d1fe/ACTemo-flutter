@@ -25,8 +25,7 @@ class _emotionCardState extends State<emotionCard> {
       create: (context) => SaveEmotion(EmotionIndex: index),
       child: Consumer<SaveEmotion>(
         builder: (context, saveEmotion, child) {
-          return MaterialApp(
-            home: Scaffold(
+          return Scaffold(
               appBar: AppBar(
                 backgroundColor: const Color(0xffededf4),
                 title: const Text('ACTion',
@@ -56,31 +55,8 @@ class _emotionCardState extends State<emotionCard> {
                   child: Column(
                     children: [
                       const SizedBox(height: 20,),
-                      const Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'ACT',
-                              style: TextStyle(
-                                color: Color(0xFF4088F0),
-                                fontSize: 30,
-                                fontFamily: 'Google Sans',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'oday',
-                              style: TextStyle(
-                                color: Color(0xFFAEDCBA),
-                                fontSize: 30,
-                                fontFamily: 'Google Sans',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                              ),
-                            ),
-                          ]
-                        )
+                      Image.asset('assets/logos/ACToday.png',
+                        width: 129.0,
                       ),
                       const SizedBox(height: 30,),
                       FlipCard(
@@ -278,8 +254,7 @@ class _emotionCardState extends State<emotionCard> {
                 ),
               ),
               bottomNavigationBar: const NavBar(),
-            )
-          );
+            );
         }
       )
     );
