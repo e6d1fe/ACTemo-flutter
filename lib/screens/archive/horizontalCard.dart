@@ -48,7 +48,7 @@ class _HorizontalCardState extends State<HorizontalCard> {
                               color: Color(0xFF001B3E),
                               fontSize: 20,
                               fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w400,
                               letterSpacing: 0.48,
                             ),
                           ),
@@ -57,7 +57,7 @@ class _HorizontalCardState extends State<HorizontalCard> {
                             child: Text('${EmotionDefinition[index]}',
                               style: TextStyle(
                                 color: Color(0xFF001B3E),
-                                fontSize: 16,
+                                fontSize: 14.0,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w400,
                                 letterSpacing: 0.24

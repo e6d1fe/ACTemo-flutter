@@ -55,16 +55,17 @@ class _ArchiveState extends State<Archive> {
                   buildCategoryButton('Pleasant'),
                 ],
               ),
-              const SizedBox(height: 40,),
-              const Divider(thickness: 1, height: 1, color: Color(0xffCAC4D0),),
-              const SizedBox(height: 40,),
+              const SizedBox(
+                  height: 40.0,
+              ),
               const Text('Emotion List',
                 style: TextStyle(
-                  fontSize: 20,
                   fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w800,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
                   letterSpacing: 0.15,
-                  height: 0.09
+                  height: 1.5,
                 ),
                 textAlign: TextAlign.left,
               ),
