@@ -45,9 +45,10 @@ class _ActState extends State<Act> {
             // emotion name & scene
             Container(
               width: 360.0,
+              margin: const EdgeInsets.symmetric(horizontal: 15),
               padding: const EdgeInsets.fromLTRB(25, 20, 25, 20),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(12.0),
                 color: const Color(0xff94d5a8),
               ),
               child: Column(
@@ -57,10 +58,10 @@ class _ActState extends State<Act> {
                   Text(EmotionTitle[widget.index],
                     style: const TextStyle(
                       fontFamily: 'Roboto',
-                      fontSize: 22.0,
+                      fontSize: 24.0,
                       fontWeight: FontWeight.w400,
                       color: Color(0xff001b3e),
-                      height: 1.273,
+                      //height: 1.273,
                     ),
                   ),
                   const SizedBox(
@@ -70,7 +71,7 @@ class _ActState extends State<Act> {
                     softWrap: true,
                     style: const TextStyle(
                       fontFamily: 'Roboto',
-                      fontSize: 12.0,
+                      fontSize: 14.0,
                       fontWeight: FontWeight.w400,
                       color: Color(0xff001b3e),
                       height: 1.333,
