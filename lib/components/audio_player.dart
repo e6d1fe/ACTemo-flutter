@@ -8,6 +8,7 @@ import 'package:just_audio/just_audio.dart' as ap;
 import 'package:actemo_flutter/data/contents.dart';
 
 import 'package:actemo_flutter/screens/practice/tips.dart';
+import 'package:actemo_flutter/screens/practice/act.dart';
 
 class AudioPlayer extends StatefulWidget {
   const AudioPlayer({
@@ -396,6 +397,45 @@ class AudioPlayerState extends State<AudioPlayer> {
                         );
                       },
                       child: isLoading ? _whenLoading() : _whenNotLoading(),
+                    ),
+                  ),
+                ],
+              ),
+            if (!widget.isPractice)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 20, 20),
+                    height: 40,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: const Color(0xFF2C6A46)
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        _audioPlayer.stop().then((value) => widget.onDelete());
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Act(index: index)));
+                      },
+                        child: const Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                  'Next',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w500,
+                                  )
+                              ),
+                              Icon(Icons.navigate_next, color: Colors.white,)
+                            ],
+                          ),
+                        )
                     ),
                   ),
                 ],

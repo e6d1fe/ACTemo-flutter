@@ -112,45 +112,8 @@ class _ListenState extends State<Listen> {
                   index: index,
                   isPractice: false,
               ),
-        
-              // 페이지 이동
+
               const SizedBox(height: 15.0),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Container(
-                  margin: const EdgeInsets.fromLTRB(0, 0, 20, 20),
-                  height: 40,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: const Color(0xFF2C6A46)
-                  ),
-                  child: TextButton(onPressed: () => {
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) =>
-                        Act(index: index))),
-                    },
-                    child: const Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Next',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w500,
-                            )
-                          ),
-                          Icon(Icons.navigate_next, color: Colors.white,)
-                        ],
-                      ),
-                    )
-                  ),
-                ),
-              ),
             ],
           ),
         ),
