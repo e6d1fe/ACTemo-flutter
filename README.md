@@ -1,7 +1,6 @@
-## ACTemo_Flutter
-
 ![CoverImage](https://github.com/e6d1fe/ActEmo-flutter/assets/108079454/7729f371-90a8-4660-9443-0a1997ec5103)
 
+## ACTemo_Flutter
 
 ### How to run our code
 
