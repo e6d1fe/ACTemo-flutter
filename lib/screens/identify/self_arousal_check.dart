@@ -5,6 +5,8 @@ import 'package:actemo_flutter/screens/identify/identify_complete.dart';
 
 import 'package:actemo_flutter/components/custom_appbar.dart';
 
+import 'package:actemo_flutter/data/suggestions.dart';
+
 class SelfArousalCheck extends StatefulWidget {
   SelfArousalCheck({required this.valence, super.key});
 
@@ -18,6 +20,8 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
   final List arousalCheckData = List.generate(arousalCheckHeader.length, (index) => ArousalCheckCategory(arousalCheckHeader[index], arousalCheckDescription[index]));
 
   List<bool> arousalCheckArray = [false, false, false, false, false, false, false];
+
+  String dropdownValue = suggestionHeading[0];
 
   int? arousalCheckCount;
   String? valence;
@@ -38,6 +42,7 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(
                       height: 25.0,
@@ -98,7 +103,92 @@ class _SelfArousalCheckState extends State<SelfArousalCheck> {
                       ),
                     ),
                     const SizedBox(
-                      height: 15.0,
+                      height: 25.0,
+                    ),
+                    const Text('Suggestions',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff2c6a46),
+                        height: 0.10,
+                        letterSpacing: 0.10,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15.18,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width - 50.0,
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.95),
+                        border: Border.all(
+                          width: 0.89,
+                          color: const Color(0xffdddfe5),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: 291.0,
+                            child: DropdownButton<String>(
+                              onChanged: (value) {
+                                setState(() {
+                                  dropdownValue = value!;
+                                });
+                              },
+                              items: suggestionHeading.map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              value: dropdownValue,
+                              icon: const Icon(Icons.keyboard_arrow_down),
+                              style: const TextStyle(
+                                fontFamily: 'Roboto',
+                                fontSize: 11.29,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff44474e),
+                                height: 1.455,
+                                letterSpacing: 0.51,
+                              ),
+                              isExpanded: true,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
+                          Text(suggestionsDescription[suggestionHeading.indexOf(dropdownValue)],
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 10.26,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff44474e),
+                              height: 1.6,
+                              letterSpacing: 0.41,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 25.0,
+                    ),
+                    const Text('Checklist',
+                      style: TextStyle(
+                        fontFamily: 'Roboto',
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff2c6a46),
+                        height: 0.10,
+                        letterSpacing: 0.10,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.18,
                     ),
                   ],
                 ),
