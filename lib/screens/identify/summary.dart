@@ -19,6 +19,8 @@ class _SummaryState extends State<Summary> {
   String userInput = '';
   String valence = '';
 
+  bool isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
 
   late ScrollController scrollController;
@@ -172,10 +174,16 @@ class _SummaryState extends State<Summary> {
                         ),
                       ),
                       onPressed: () {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        debugPrint(isLoading.toString());
+
                         gemini.text(getGeminiPrompt(userInput)).then((value) {
                           if (value?.output == 'positive' || value?.output == 'negative') {
                             setState(() {
                               valence = value?.output as String;
+                              isLoading = false;
                             });
                             Navigator.push(context, MaterialPageRoute(builder: (context) => SelfArousalCheck(valence: valence)));
                           } else {
@@ -188,15 +196,7 @@ class _SummaryState extends State<Summary> {
                           }
                         }).catchError((e) => print(e));
                       },
-                      child: const Text('Done',
-                        style: TextStyle(
-                          fontFamily: 'Roboto',
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          letterSpacing: 0.1,
-                        ),
-                      ),
+                      child: isLoading ? _whenLoading() : _whenNotLoading(),
                     ),
                   ),
                   SizedBox(
@@ -218,5 +218,27 @@ class _SummaryState extends State<Summary> {
         curve: Curves.easeIn,
       );
     });
+  }
+
+  Widget _whenNotLoading () {
+    return const Text('Done',
+      style: TextStyle(
+        fontFamily: 'Roboto',
+        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+        color: Colors.white,
+        letterSpacing: 0.1,
+      ),
+    );
+  }
+
+  Widget _whenLoading () {
+    return const SizedBox(
+      width: 26.0,
+      height: 26.0,
+      child: CircularProgressIndicator(
+        color: Colors.white,
+      ),
+    );
   }
 }
