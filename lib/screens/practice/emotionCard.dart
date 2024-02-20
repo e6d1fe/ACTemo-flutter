@@ -188,13 +188,13 @@ class _emotionCardState extends State<emotionCard> {
               const SizedBox(height: 30,),
               const Flexible(
                 child: Text(
-                  'Please cherish and remember \nhow you felt today',
+                  'Please cherish and remember \nhow you felt today!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,
                     fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     letterSpacing: 0.50,
                   ),
                 ),
