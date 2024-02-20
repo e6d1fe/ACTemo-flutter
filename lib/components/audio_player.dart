@@ -49,6 +49,8 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   String level = '';
 
+  bool isLoading = false;
+
   @override
   void initState() {
     _playerStateChangedSubscription = _audioPlayer.playerStateStream.listen((ap.PlayerState state) async {
@@ -147,6 +149,10 @@ class AudioPlayerState extends State<AudioPlayer> {
                         backgroundColor: const Color(0xff2c6a46),
                       ),
                       onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+
                         try {
                           var request = http.MultipartRequest('POST', Uri.parse('https://actemo-server-lc5owkzmdq-an.a.run.app/predict'));
                           request.headers.addAll({'Content-Type': 'audio/mp4'});
@@ -161,6 +167,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                           var temp = convert.jsonDecode(result.body) as Map<String, dynamic>;
                           setState(() {
                             level = temp['level'];
+                            isLoading = false;
                           });
                         } catch (e) {
                           debugPrint(e.toString());
@@ -388,28 +395,7 @@ class AudioPlayerState extends State<AudioPlayer> {
                             }
                         );
                       },
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Confirm',
-                            style: TextStyle(
-                              fontFamily: 'Roboto',
-                              fontSize: 12.70,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                              height: 1.333,
-                              letterSpacing: 0.53,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5.29,
-                          ),
-                          Icon(Icons.check_circle_outline,
-                            size: 17.99,
-                            color: Colors.white,
-                          ),
-                        ],
-                      ),
+                      child: isLoading ? _whenLoading() : _whenNotLoading(),
                     ),
                   ),
                 ],
@@ -480,5 +466,40 @@ class AudioPlayerState extends State<AudioPlayer> {
   Future<void> stop() async {
     await _audioPlayer.stop();
     return _audioPlayer.seek(Duration.zero);
+  }
+
+  Widget _whenNotLoading () {
+    return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Confirm',
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 12.70,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+            height: 1.333,
+            letterSpacing: 0.53,
+          ),
+        ),
+        SizedBox(
+          width: 5.29,
+        ),
+        Icon(Icons.check_circle_outline,
+          size: 17.99,
+          color: Colors.white,
+        ),
+      ],
+    );
+  }
+
+  Widget _whenLoading () {
+    return const SizedBox(
+      width: 30.0,
+      height: 30.0,
+      child: CircularProgressIndicator(
+        color: Colors.white,
+      ),
+    );
   }
 }
