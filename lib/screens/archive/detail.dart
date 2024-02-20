@@ -67,15 +67,14 @@ class Detail extends StatelessWidget {
                             fontWeight: FontWeight.w600,),),
                           SizedBox(
                             width: MediaQuery.of(context).size.width*0.7,
-                            child: Flexible(
-                              child: Text(EmotionDefinition[index],
-                                style: const TextStyle(
-                                  color: Color(0xFF001B3E),
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              )
+                            child: Text(EmotionDefinition[index],
+                              softWrap: true,
+                              style: const TextStyle(
+                                color: Color(0xFF001B3E),
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w400,
+                              ),
                             )
                           ),
                           const SizedBox(height: 20,),
@@ -85,15 +84,14 @@ class Detail extends StatelessWidget {
                             fontWeight: FontWeight.w600,),),
                           SizedBox(
                             width: MediaQuery.of(context).size.width*0.7,
-                            child: Flexible(
-                              child: Text(EmotionSituation[index],
-                                style: const TextStyle(
-                                  color: Color(0xFF001B3E),
-                                  fontSize: 16,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              )
+                            child: Text(EmotionSituation[index],
+                              softWrap: true,
+                              style: const TextStyle(
+                                color: Color(0xFF001B3E),
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w400,
+                              ),
                             )
                           ),
                         ],
