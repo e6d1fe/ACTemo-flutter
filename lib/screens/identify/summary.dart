@@ -194,7 +194,7 @@ class _SummaryState extends State<Summary> {
                               ),
                             );
                           }
-                        }).catchError((e) => print(e));
+                        }).catchError((Object e) => throw Exception(e));
                       },
                       child: isLoading ? _whenLoading() : _whenNotLoading(),
                     ),
