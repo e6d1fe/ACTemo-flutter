@@ -53,19 +53,18 @@ class chat extends StatelessWidget {
                         bottomRight: Radius.circular(26.46),
                       ),
                     ),
-                    child: Flexible(
-                      child: Text(
-                        message,
-                        style: const TextStyle(
-                          color: Color(0xff001b3e),
-                          fontSize: 12,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                          //height: 0.11,
-                          //letterSpacing: 0.40,
-                        ),
-                        textAlign: chatIndex.isEven ? TextAlign.left : TextAlign.right,
+                    child: Text(
+                      message,
+                      softWrap: true,
+                      style: const TextStyle(
+                        color: Color(0xff001b3e),
+                        fontSize: 12,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
+                        //height: 0.11,
+                        letterSpacing: 0.40,
                       ),
+                      textAlign: chatIndex.isEven ? TextAlign.left : TextAlign.right,
                     ),
                   ),
                   const SizedBox(height: 20),

@@ -135,16 +135,15 @@ class _emotionCardState extends State<emotionCard> {
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.9,
-                                child: Flexible(
-                                  child: Text(
-                                    EmotionDefinition[index],
-                                    style: const TextStyle(
-                                      color: Color(0xFF001B3E),
-                                      fontSize: 12,
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  )
+                                child: Text(
+                                  EmotionDefinition[index],
+                                  softWrap: true,
+                                  style: const TextStyle(
+                                    color: Color(0xFF001B3E),
+                                    fontSize: 12,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 )
                               ),
                               const SizedBox(height: 8,),
@@ -158,16 +157,15 @@ class _emotionCardState extends State<emotionCard> {
                               ),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.9,
-                                  child: Flexible(
-                                    child: Text(
-                                      EmotionSituation[index],
-                                      style: const TextStyle(
-                                        color: Color(0xFF001B3E),
-                                        fontSize: 12,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    )
+                                  child: Text(
+                                    EmotionSituation[index],
+                                    softWrap: true,
+                                    style: const TextStyle(
+                                      color: Color(0xFF001B3E),
+                                      fontSize: 12,
+                                      fontFamily: 'Roboto',
+                                      fontWeight: FontWeight.w400,
+                                    ),
                                   )
                               ),
                             ],
@@ -186,17 +184,15 @@ class _emotionCardState extends State<emotionCard> {
                 ),
               ),
               const SizedBox(height: 30,),
-              const Flexible(
-                child: Text(
-                  'Please cherish and remember \nhow you felt today!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
-                    fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.50,
-                  ),
+              const Text(
+                'Please cherish and remember \nhow you felt today!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 0.50,
                 ),
               ),
               const SizedBox(height: 40,),
