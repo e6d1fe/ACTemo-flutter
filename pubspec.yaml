@@ -43,7 +43,6 @@ dependencies:
   flutter_sound_record: ^3.3.2
   just_audio: ^0.9.36
   http: ^1.2.0
-  provider: ^6.1.1
   flip_card: ^0.7.0
 
 dev_dependencies:
