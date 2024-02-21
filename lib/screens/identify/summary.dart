@@ -193,6 +193,9 @@ class _SummaryState extends State<Summary> {
                                 backgroundColor: Colors.blue,
                               ),
                             );
+                            setState(() {
+                              isLoading = false;
+                            });
                           }
                         }).catchError((Object e) => throw Exception(e));
                       },
