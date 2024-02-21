@@ -27,6 +27,7 @@
 - [just_audio](https://pub.dev/packages/just_audio)
 - [http](https://pub.dev/packages/http)
 - [flip_card](https://pub.dev/packages/flip_card)
+- [flutter_svg](https://pub.dev/packages/flutter_svg)
 
 ### 🔗 Link to Other Parts
 
