@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:actemo_flutter/screens/login.dart';
 
@@ -19,7 +20,7 @@ class Start extends StatelessWidget {
             Positioned(
               top: 395.0,
               left: 26.0,
-              child: Image.asset('assets/logos/actemo_logo_start.png',
+              child: SvgPicture.asset('assets/logos/ACTemo.svg',
                 width: 290.54,
                 height: 100.73,
               ),
