@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:actemo_flutter/screens/register.dart';
 import 'package:actemo_flutter/screens/main_screen.dart';
@@ -17,6 +18,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _authentication = FirebaseAuth.instance;
 
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
   final _formKey = GlobalKey<FormState>();
 
   String userEmail = '';
@@ -28,6 +31,30 @@ class _LoginState extends State<Login> {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save();
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+
+    final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount!.authentication;
+
+    final OAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+    final User user = userCredential.user!;
+
+
+    if (user != null) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to log in with Google')
+      ));
     }
   }
 
@@ -253,6 +280,40 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              // google login button
+              Positioned(
+                top: 580.0,
+                left: 18.0,
+                child: ElevatedButton(
+                  child: Row(
+                    children: [
+                      Image.asset('assets/logos/google_logo.png',
+                        width: 15.0,
+                      ),
+                      const SizedBox(
+                        width: 5.0,
+                      ),
+                      const Text('Continue with Google',
+                        style: TextStyle(
+                          fontFamily: 'Roboto',
+                          fontSize: 14.787,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff284777),
+                          height: 1.333,
+                          letterSpacing: 0.62,
+                        ),
+                      )
+                    ],
+                  ),
+                  onPressed: () async {
+                    try {
+                      signInWithGoogle();
+                    } catch (e) {
+                      debugPrint(e.toString());
+                    }
+                  },
+                ),
+              ),
               // button linked to register page
               Positioned(
                 bottom: 13,
@@ -302,7 +363,7 @@ class _LoginState extends State<Login> {
                       );
 
                       if (newUser.user != null) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
                       }
                     } catch (err) {
                       print(err);
