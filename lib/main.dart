@@ -4,9 +4,17 @@ import 'firebase_options.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter/services.dart';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'api_key.dart';
 
 import 'package:actemo_flutter/screens/walkthrough/walkthrough1.dart';
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('Handling a background message: ${message.messageId}');
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +26,14 @@ void main() async {
   ]);
 
   Gemini.init(apiKey: geminiApiKey);
+
+  FirebaseMessaging.instance.requestPermission(
+    badge: true,
+    alert: true,
+    sound: true,
+  );
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(MyApp());
 }
