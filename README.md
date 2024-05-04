@@ -22,6 +22,8 @@
 - [google_fonts](https://pub.dev/packages/google_fonts)
 - [firebase_auth](https://pub.dev/packages/firebase_auth)
 - [firebase_core](https://pub.dev/packages/firebase_core)
+- [google_sign_in](https://pub.dev/packages/google_sign_in)
+- [firebase_messaging](https://pub.dev/packages/firebase_messaging)
 - [flutter_gemini](https://pub.dev/packages/flutter_gemini)
 - [flutter_sound_record](https://pub.dev/packages/flutter_sound_record)
 - [just_audio](https://pub.dev/packages/just_audio)
