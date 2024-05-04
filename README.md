@@ -13,7 +13,7 @@
 
 **Our application requires Internet connection and microphone permission to run properly.**
 
-1. Download our APK file here: [Download APK](https://drive.google.com/file/d/1pwkNZ1bulcaN29_xPK10mmB-mE71A_07/view?usp=sharing)
+1. Download our APK file here: [Download APK](https://drive.google.com/file/d/1oEts3hv7nJ2DG47pd74SbumLYYaGRr0v/view?usp=sharing)
 2. Run the downloaded file on your phone! ✨
 
 ### 📦 Packages
