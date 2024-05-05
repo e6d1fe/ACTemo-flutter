@@ -36,4 +36,5 @@
 If you want to explore other parts of the project, feel free to navigate to:
 
 - [Overall Project Repository](https://github.com/smmin21/ACTemo-Google-Solution-Challenge-2024): For the complete project repository, including all parts, visit the GitHub repository.
-- [Server Development](https://github.com/smmin21/ACTemo-server): Explore the backend & model development aspects of the project, including instructions on how to run the server using Docker and making your very own request to our API server.
+- [Machine Learning Server Development](https://github.com/smmin21/ACTemo-server): Explore the model development aspects of the project, including instructions on how to run the server using Docker and making your very own request to our API server.
+- [Backend Development](https://github.com/smmin21/ACTemo-API-Server): Dive into the backend development aspects of the project, including API implementation and database management.
