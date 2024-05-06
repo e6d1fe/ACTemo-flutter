@@ -9,14 +9,14 @@
 
 </details>
 
-### 🚀 How to Run Our Code
+## 🚀 How to Run Our Code
 
 **Our application requires Internet connection and microphone permission to run properly.**
 
 1. Download our APK file here: [Download APK](https://drive.google.com/file/d/1oEts3hv7nJ2DG47pd74SbumLYYaGRr0v/view?usp=sharing)
 2. Run the downloaded file on your phone! ✨
 
-### 📦 Packages
+## 📦 Packages
 
 - [flutter_native_splash](https://pub.dev/packages/flutter_native_splash)
 - [google_fonts](https://pub.dev/packages/google_fonts)
@@ -31,7 +31,7 @@
 - [flip_card](https://pub.dev/packages/flip_card)
 - [flutter_svg](https://pub.dev/packages/flutter_svg)
 
-### 🔗 Link to Other Parts
+## 🔗 Link to Other Parts
 
 If you want to explore other parts of the project, feel free to navigate to:
 
